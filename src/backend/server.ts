@@ -1,6 +1,7 @@
 import express from 'express' ;
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { booksRouter} from './routes/books-routes'
 
 dotenv.config();
 
@@ -20,7 +21,10 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3023;
 
+app.use('/api/books', booksRouter);
+
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
 });
+
 

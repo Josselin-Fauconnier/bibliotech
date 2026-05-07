@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 03 mai 2026 à 15:26
+-- Généré le : mer. 06 mai 2026 à 14:49
 -- Version du serveur : 8.4.3
 -- Version de PHP : 8.3.30
 
@@ -70,7 +70,7 @@ CREATE TABLE `reading_lists` (
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('user','admin') DEFAULT 'user',

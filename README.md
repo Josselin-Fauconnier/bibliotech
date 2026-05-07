@@ -41,9 +41,9 @@ bibliotech/
 │   │       └── openLibrary.ts     # Appels API externe
 │   └── shared/
 │       └── schemas/               # Schémas Zod partagés front/back
-│           ├── user.schema.ts
-│           ├── list.schema.ts
-│           └── comment.schema.ts
+│           ├── user-schema.ts
+│           ├── list-schema.ts
+│           └── comment-schema.ts
 ├── public/
 │   ├── css/
 │   └── html/

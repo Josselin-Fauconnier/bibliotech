@@ -35,7 +35,8 @@ describe('CommentSchema', () => {
     expect(result.success).toBe(false);
   });
 
-  it('rejette un contenu trop long', () => {
+
+  it('rejette un contenu trop long (> 750 caractères)', () => {
     const result = CommentSchema.safeParse({
       book_id: 'OL82563W',
       content: 'a'.repeat(751),

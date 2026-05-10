@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn src/backend/server.ts",
     "build": "tsc",
+    "build:frontend": "tsc --project tsconfig.frontend.json",
+    "dev:frontend": "tsc --project tsconfig.frontend.json --watch",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },

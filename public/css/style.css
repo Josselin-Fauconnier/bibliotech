@@ -1,0 +1,303 @@
+/* =============================================
+   VARIABLES
+   ============================================= */
+:root {
+  /* Couleurs */
+  --color-primary:       #1e3a5f;
+  --color-primary-light: #2d5282;
+  --color-accent:        #e8821a;
+  --color-bg:            #f4f6f9;
+  --color-surface:       #ffffff;
+  --color-text:          #2d3748;
+  --color-text-muted:    #718096;
+  --color-border:        #e2e8f0;
+  --color-error:         #c53030;
+
+  /* Espacement */
+  --space-xs: 0.5rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Typographie */
+  --font-size-sm:   0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   clamp(1.25rem, 3vw, 1.75rem);
+
+  /* UI */
+  --radius:          10px;
+  --radius-sm:       5px;
+  --shadow:          0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover:    0 6px 20px rgba(0, 0, 0, 0.14);
+  --transition:      200ms ease;
+  --header-height:   60px;
+  --max-width:       1400px;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+
+
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =============================================
+   ACCESSIBILITÉ
+   ============================================= */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-md);
+  box-shadow: var(--shadow);
+}
+
+.site-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: #fff;
+}
+
+.page-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+}
+
+
+
+
+.main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+
+/* =============================================
+   FORMULAIRE DE RECHERCHE
+   ============================================= */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.search-form__input {
+  width: 100%;
+  padding: 0.75rem var(--space-md);
+  font-size: var(--font-size-base);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition);
+  min-height: 44px; 
+}
+
+.search-form__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.search-form__btn {
+  width: 100%;
+  padding: 0.75rem var(--space-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity var(--transition);
+  min-height: 44px; 
+}
+
+.search-form__btn:hover {
+  opacity: 0.75;
+}
+
+/* =============================================
+   MESSAGE DE STATUT
+   ============================================= */
+.status {
+  min-height: 1.5rem;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.status--error {
+  color: var(--color-error);
+}
+
+/* =============================================
+   GRILLE DE LIVRES — MOBILE FIRST (1 colonne)
+   ============================================= */
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+/* =============================================
+   CARTE LIVRE — mobile : horizontal
+   ============================================= */
+.book-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.book-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.book-card__link {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  min-height: 44px;
+}
+
+.book-card__cover,
+.book-card__no-cover {
+  width: 72px;
+  height: 104px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.book-card__no-cover {
+  background: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-xs);
+}
+
+.book-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.book-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-card__author {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.book-card__year {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: auto;
+}
+
+/* =============================================
+   TABLETTE — 768px : 3 colonnes
+   ============================================= */
+@media (min-width: 768px) {
+  .main {
+    padding: var(--space-lg);
+  }
+
+  .search-form {
+    flex-direction: row;
+  }
+
+  .search-form__input {
+    flex: 1;
+  }
+
+  .search-form__btn {
+    width: auto;
+    padding: 0.75rem var(--space-xl);
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* carte verticale sur tablette+ */
+  .book-card__link {
+    flex-direction: column;
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+  }
+
+  .book-card__cover,
+  .book-card__no-cover {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* =============================================
+   DESKTOP — 1200px : 5 colonnes
+   ============================================= */
+@media (min-width: 1200px) {
+  .main {
+    padding: var(--space-xl);
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

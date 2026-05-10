@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche BiblioTech</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+
+  <main class="main">
+
+    <h1 class="page-title">Rechercher un livre</h1>
+
+    <form id="search-form" class="search-form" role="search">
+      <label for="search-input" class="sr-only">Rechercher un livre</label>
+      <input
+        type="search"
+        id="search-input"
+        class="search-form__input"
+        placeholder="Titre, auteur, ISBN..."
+        autocomplete="off"
+      >
+      <button type="submit" class="search-form__btn">Rechercher</button>
+    </form>
+
+    <p id="status-message" class="status" aria-live="polite"></p>
+
+    <div id="books-grid" class="books-grid" role="list"></div>
+
+  </main>
+
+  <script type="module" src="/js/pages/books.js"></script>
+
+</body>
+</html>

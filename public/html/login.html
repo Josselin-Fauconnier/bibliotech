@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+
+  <main class="main">
+
+    <div class="auth-card">
+      <h1 class="auth-card__title">Connexion</h1>
+
+      <p id="auth-error" class="auth-error" role="alert" aria-live="assertive"></p>
+
+      <form id="login-form" class="auth-form" novalidate>
+
+        <div class="auth-form__field">
+          <label for="email" class="auth-form__label">Adresse e-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="auth-form__input"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="auth-form__field">
+          <label for="password" class="auth-form__label">Mot de passe</label>
+          <input type="password" id="password" name="password" class="auth-form__input" autocomplete="current-password" required>
+        </div>
+
+        <button type="submit" class="auth-form__btn">Se connecter</button>
+
+      </form>
+
+      <p class="auth-card__footer"> 
+        <a href="/html/register.html" class="auth-card__link">Créer vous  un compte</a>
+      </p>
+    </div>
+
+  </main>
+
+  <script type="module" src="/js/pages/login.js"></script>
+
+</body>
+</html>

@@ -97,6 +97,7 @@ img {
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: var(--space-lg);
+  text-align: center;
 }
 
 

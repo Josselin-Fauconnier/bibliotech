@@ -2,6 +2,7 @@ import express from 'express' ;
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { booksRouter} from './routes/books-routes'
+import { authRouter } from './routes/auth-routes'
 
 dotenv.config();
 
@@ -16,13 +17,14 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({ message: ' Projet BiblioTech API' });
 });
 
 const PORT = process.env.PORT || 3023;
 
 app.use('/api/books', booksRouter);
+app.use('/api/auth', authRouter);
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);

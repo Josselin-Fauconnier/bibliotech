@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 06 mai 2026 à 14:49
+-- Généré le : mar. 12 mai 2026 à 14:35
 -- Version du serveur : 8.4.3
 -- Version de PHP : 8.3.30
 
@@ -46,6 +46,19 @@ CREATE TABLE `list_books` (
   `list_id` int NOT NULL,
   `book_id` varchar(50) NOT NULL,
   `added_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `login_attempts`
+--
+
+CREATE TABLE `login_attempts` (
+  `id` int NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -110,6 +123,12 @@ ALTER TABLE `list_books`
   ADD KEY `list_id` (`list_id`);
 
 --
+-- Index pour la table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `reading_lists`
 --
 ALTER TABLE `reading_lists`
@@ -144,6 +163,12 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pour la table `list_books`
 --
 ALTER TABLE `list_books`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `login_attempts`
+--
+ALTER TABLE `login_attempts`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --

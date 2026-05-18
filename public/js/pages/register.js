@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
         window.location.href = '/html/login.html';
     }
     catch {
-        errorEl.textContent = 'Impossible de contacter le serveur';
+        errorEl.textContent = ' il est impossible de contacter le serveur';
     }
     finally {
         submitButton.disabled = false;

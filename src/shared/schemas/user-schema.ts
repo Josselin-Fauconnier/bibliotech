@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 export const RegisterSchema = z.object({
-  username: z.string().min(2).max(20),
-  email: z.email(),
+  username: z.string().min(2, '2 caractères minimum').max(20, '20 caractères maximum'),
+  email: z.email('Adresse e-mail invalide'),
   password: z.string()
     .min(12, "12 caractères minimum")
     .regex(/[A-Z]/, "Une majuscule est requise")

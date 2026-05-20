@@ -10,50 +10,1480 @@
     {
       "name": "création de compte",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"test\",\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
       },
-      "response": []
+      "response": [
+        {
+          "name": "création de compte",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"test\",\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "39"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"27-LXhCOca4dpjAYKwKYW/86TH/HSU\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 08:55:49 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \" le Compte  a été crée\"\n}"
+        }
+      ]
     },
     {
       "name": "tentative de création avec même mail",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"test\",\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
       },
-      "response": []
+      "response": [
+        {
+          "name": "tentative de création avec même mail",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"test\",\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "39"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"27-5Ml65uwSX2fBpjK0jYVg9br704Y\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 10:04:58 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"l'email est déja utlisé\"\n}"
+        }
+      ]
     },
     {
       "name": "mdp court",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"username\": \"test2\", \r\n\"email\": \"test2@test.fr\",\r\n \"password\": \"1\" }\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
       },
-      "response": []
+      "response": [
+        {
+          "name": "mdp court",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"username\": \"test2\", \r\n\"email\": \"test2@test.fr\",\r\n \"password\": \"1\" }\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "142"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"8e-d2Ij5+qMpZmkXjSFqrG+M6kMiHM\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 10:06:01 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"errors\": {\n        \"password\": [\n            \"12 caractères minimum\",\n            \"Une majuscule est requise\",\n            \"Une minuscule est requise\",\n            \"Un caractère spécial est requis\"\n        ]\n    }\n}"
+        }
+      ]
     },
     {
       "name": "connection réusie",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
       },
-      "response": []
+      "response": [
+        {
+          "name": "connection réusie",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc5MjY2NTkzLCJleHAiOjE3NzkyODgxOTN9.2rSzU3bX92s0j6pyTKf29b6F7kXC3dT5514E5e4rZeY; Max-Age=43200; Path=/; Expires=Wed, 20 May 2026 20:43:13 GMT; HttpOnly; SameSite=Strict"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"21-IIEQCNJaHvVM1TdhSXXUUVJFJ/s\""
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 20 May 2026 08:43:13 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"role\": \"user\",\n    \"username\": \"test\"\n}"
+        }
+      ]
     },
     {
       "name": "connex mauvais MDP",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!1392\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
       },
-      "response": []
+      "response": [
+        {
+          "name": "connex mauvais MDP",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!1392\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "43"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2b-xrNonhX9xYRT8hZlJPVOmFnU0NY\""
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 20 May 2026 08:47:36 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"l'identifiant n'est pas connu\"\n}"
+        }
+      ]
     },
     {
       "name": "Tentative brute force",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!1392\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
       },
-      "response": []
+      "response": [
+        {
+          "name": "Tentative brute force",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!1392\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "89"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"59-eNTG689g40c3Qf4nPgX7UIle0OY\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 10:07:59 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Il y a eu trop de tentatives de connexion échouées. Réessayez plus tard.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "creation liste",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"fav\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "New Request",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"fav\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "21"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"15-Av7xTOflS/Ru8OQOMUSXabIyOMM\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 12:55:20 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"name\": \"fav\"\n}"
+        },
+        {
+          "name": "creation liste",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"fav\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "21"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"15-Av7xTOflS/Ru8OQOMUSXabIyOMM\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 12:55:20 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"name\": \"fav\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "liste sans nom",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n    \"name\": \"\" \r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "liste sans nom",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n    \"name\": \"\" \r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "41"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"29-hRq1cne+rNq0Q4DTrsHTuXLTk6s\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 14:33:45 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"errors\": {\n        \"name\": [\n            \"Le nom est requis\"\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "recup liste lecture",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3023/api/lists",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "recup liste lecture",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3023/api/lists",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "82"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"52-RCcg0Q/PYPukPqtnNXs5GegUnEk\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 14:39:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"fav\",\n        \"description\": null,\n        \"created_at\": \"2026-05-18T12:55:20.000Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "ajout d'un livre",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"bookId\": \"/works/OL45804W\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists/1/books",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists",
+            "1",
+            "books"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "ajout d'un livre",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bookId\": \"/works/OL45804W\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists/1/books",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists",
+                "1",
+                "books"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "38"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"26-BFE5UlId+A6KUQ5k5zGKCcJQR64\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 18 May 2026 14:43:33 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Le livre a été ajouté\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "récup livre d'une liste",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists/1/books",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists",
+            "1",
+            "books"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "récup livre d'une liste",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists/1/books",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists",
+                "1",
+                "books"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "69"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"45-/ZN6BcTJjvNBjjtnzyWChf65UQw\""
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 20 May 2026 08:43:31 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"book_id\": \"/works/OL45804W\",\n        \"added_at\": \"2026-05-18T14:43:33.000Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Retirer un liste d'une liste",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists/1/books/%2Fworks%2FOL45804W",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists",
+            "1",
+            "books",
+            "%2Fworks%2FOL45804W"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Retirer un liste d'une liste",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists/1/books/%2Fworks%2FOL45804W",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists",
+                "1",
+                "books",
+                "%2Fworks%2FOL45804W"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 20 May 2026 08:46:43 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Supprimer une liste",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Supprimer une liste",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists",
+                "1"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 20 May 2026 08:52:51 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Sans cookie",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"lapin\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/lists",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "lists"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Sans cookie",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"lapin\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/lists",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "lists"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "30"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"1e-DYt3zWe8hGlk5Re1VYRcEye0Xh0\""
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 20 May 2026 09:00:56 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Non authentifié\"\n}"
+        }
+      ]
     }
   ]
 }

@@ -70,3 +70,13 @@ export async function login(req: Request, res: Response) {
 
   res.json({ role: user.role, username: user.username });
 }
+
+
+export function logout (req:Request, res: Response) {
+  res.clearCookie( 'token', {
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict'
+  });
+  res.json({message: "Vous êtes déconnecté"})
+}

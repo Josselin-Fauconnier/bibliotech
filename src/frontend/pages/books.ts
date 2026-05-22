@@ -1,4 +1,7 @@
 import { searchBooks , BookDoc} from '../api/backend.js';
+import { initNav } from '../utils/navBarre.js';
+
+initNav();
 
 const searchForm   = document.querySelector<HTMLFormElement>('#search-form')!;
 const searchInput  = document.querySelector<HTMLInputElement>('#search-input')!;

@@ -1,3 +1,5 @@
+import { initNav } from '../utils/navBarre.js';
+initNav();
 const form = document.getElementById('register-form');
 const errorEl = document.getElementById('auth-error');
 if (!(form instanceof HTMLFormElement))
@@ -29,10 +31,9 @@ form.addEventListener('submit', async (e) => {
         window.location.href = '/html/login.html';
     }
     catch {
-        errorEl.textContent = ' il est impossible de contacter le serveur';
+        errorEl.textContent = 'Impossible de contacter le serveur';
     }
     finally {
         submitButton.disabled = false;
     }
 });
-export {};

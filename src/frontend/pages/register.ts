@@ -1,3 +1,7 @@
+import { initNav } from '../utils/navBarre.js';
+
+initNav();
+
 const form = document.getElementById('register-form');
 const errorEl = document.getElementById('auth-error');
 

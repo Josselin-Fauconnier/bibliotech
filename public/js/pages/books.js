@@ -1,4 +1,6 @@
 import { searchBooks } from '../api/backend.js';
+import { initNav } from '../utils/navBarre.js';
+initNav();
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const booksGrid = document.querySelector('#books-grid');

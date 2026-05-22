@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes listes</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+  <nav id="main-nav" class="nav"></nav>
+
+  <main class="main">
+
+    <h1 class="page-title">Mes listes de lecture</h1>
+
+    <form id="create-list-form" class="auth-form list-create-form" novalidate>
+      <div class="auth-form__field">
+        <label for="list-name" class="auth-form__label">Nom de la liste</label>
+        <input
+          type="text"
+          id="list-name"
+          name="list-name"
+          class="auth-form__input"
+          placeholder="Ex : Livres à lire..."
+          required
+        >
+      </div>
+      <button type="submit" class="auth-form__btn">Créer la liste</button>
+    </form>
+
+    <p id="list-error" class="auth-error" role="alert" aria-live="assertive"></p>
+
+    <div id="lists-container" class="lists-container"></div>
+
+  </main>
+
+  <script type="module" src="/js/pages/lists.js"></script>
+
+</body>
+</html>

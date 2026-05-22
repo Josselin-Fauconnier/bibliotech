@@ -1,3 +1,5 @@
+import { initNav } from '../utils/navBarre.js';
+initNav();
 const form = document.getElementById('login-form');
 const errorEl = document.getElementById('auth-error');
 if (!(form instanceof HTMLFormElement))
@@ -35,4 +37,3 @@ form.addEventListener('submit', async (e) => {
         submitButton.disabled = false;
     }
 });
-export {};

@@ -1,12 +1,6 @@
 import { Router } from 'express';
 import { isAuthenticated } from '../middlewares/isAuthenticated';
-import {
-  getLists,
-  createListHandler,
-  deleteListHandler,
-  getBooks,
-  addBook,
-  removeBook,
+import {getLists,createListHandler,deleteListHandler,getBooks,addBook,removeBook,
 } from '../controllers/list-controller'
 
 

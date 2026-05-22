@@ -3,42 +3,29 @@ import { CommentSchema } from './comment-schema';
 
 describe('CommentSchema', () => {
 
-  it('accepte des données valides', () => {
+  it('accepte un contenu valide', () => {
     const result = CommentSchema.safeParse({
-      book_id: 'OL82563W',
-      content: ' Un Très bon livre !',
+      content: 'Un très bon livre !',
     });
     expect(result.success).toBe(true);
   });
 
-  it('rejette un book_id vide', () => {
-    const result = CommentSchema.safeParse({
-      book_id: '',
-      content: 'Très mauvais  livre !',
-    });
-    expect(result.success).toBe(false);
-  });
-
   it('rejette un contenu vide', () => {
     const result = CommentSchema.safeParse({
-      book_id: 'OL82563W',
       content: '',
     });
     expect(result.success).toBe(false);
   });
 
-  it('rejette un contenu trop court',() => {
+  it('rejette un contenu trop court', () => {
     const result = CommentSchema.safeParse({
-        book_id:'OL82563W',
-        content: 'lune',
+      content: 'lune',
     });
     expect(result.success).toBe(false);
   });
 
-
   it('rejette un contenu trop long (> 750 caractères)', () => {
     const result = CommentSchema.safeParse({
-      book_id: 'OL82563W',
       content: 'a'.repeat(751),
     });
     expect(result.success).toBe(false);

@@ -1484,6 +1484,721 @@
           "body": "{\n    \"message\": \"Non authentifié\"\n}"
         }
       ]
+    },
+    {
+      "name": "Recup commentaire sans co",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/OL45804W",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "OL45804W"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Recup commentaire sans co",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/OL45804W",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "OL45804W"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "2"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 07:54:11 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "[]"
+        }
+      ]
+    },
+    {
+      "name": "poster un commentaire en etant co",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"content\": \"Le livre parle d'un lapin qui mange une salade \"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/OL45804W",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "OL45804W"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "poster un commentaire en etant co",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"Le livre parle d'un lapin qui mange une salade \"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/OL45804W",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "OL45804W"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "43"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2b-s2ESuH00jQbGwbbRZl7JDTGsmdM\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 07:58:21 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Le commentaire a été posté\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "récuperation commentaire",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/OL45804W",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "OL45804W"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "récuperation commentaire",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/OL45804W",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "OL45804W"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "128"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"80-m7xkYTMBi9pT0Rtaa5qDfgd0W4s\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 07:59:54 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"content\": \"Le livre parle d'un lapin qui mange une salade \",\n        \"created_at\": \"2026-05-22T07:58:21.000Z\",\n        \"username\": \"test\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "commentaire court",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"content\": \"Puant\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/OL45804W",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "OL45804W"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "commentaire court",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"content\": \"Puant\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/OL45804W",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "OL45804W"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "49"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"31-QBcT96DzdIHc/m9ShhHRwmGms4E\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 08:02:01 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"errors\": {\n        \"content\": [\n            \"10 caractères minimum\"\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "sans cookie/non co",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"content\": \"Pokemon ou digimon les livres sont bien \"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/OL45804W\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "OL45804W\n"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "sans cookie/non co",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"Pokemon ou digimon les livres sont bien \"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/OL45804W\n",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "OL45804W\n"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "30"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"1e-DYt3zWe8hGlk5Re1VYRcEye0Xh0\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 08:07:25 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Non authentifié\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "surprimer un commentaire",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "surprimer un commentaire",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "1"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 08:21:24 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "supprimer un commentaire inexistant",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/comments/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "comments",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "supprimer un commentaire inexistant",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/comments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "comments",
+                "1"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "41"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"29-TA+Oz1wHc9cYdfLSOK2G0IoCCus\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 22 May 2026 08:24:15 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"le commentaire n'existe pas\"\n}"
+        }
+      ]
     }
   ]
 }

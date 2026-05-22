@@ -1,14 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { CreateListSchema } from '../../shared/schemas/list-schema';
-import {
-  getListsByUser,
-  createList,
-  deleteList,
-  getBooksInList,
-  addBooksToList,
-  removeBookFromList,
-} from '../models/list-model';
+import { getListsByUser,createList,deleteList,getBooksInList,addBooksToList,removeBookFromList,} from '../models/list-model';
 
 export async function getLists(req: Request, res: Response) {
   const lists = await getListsByUser(req.user!.userId);

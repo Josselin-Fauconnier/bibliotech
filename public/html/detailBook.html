@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche livre</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+  <nav id="main-nav" class="nav"></nav>
+
+  <main class="main">
+
+    <section id="book-detail" class="book-detail" aria-label="Fiche du livre">
+
+      <div class="book-detail__cover-col">
+        <img id="book-cover" class="book-detail__cover" alt="" hidden>
+        <div id="book-no-cover" class="book-detail__no-cover" hidden>Pas de couverture</div>
+      </div>
+
+      <div class="book-detail__info-col">
+        <p id="book-status" class="status" aria-live="polite"></p>
+        <h1 id="book-title" class="book-detail__title"></h1>
+        <p id="book-author" class="book-detail__author"></p>
+        <p id="book-year" class="book-detail__year"></p>
+        <p id="book-description" class="book-detail__description"></p>
+
+        <section id="add-to-list-section" class="add-to-list" hidden aria-label="Ajouter à une liste">
+          <h2 class="add-to-list__title">Ajouter à une liste</h2>
+          <form id="add-to-list-form" class="add-to-list__form">
+            <label for="list-select" class="sr-only">Choisir une liste</label>
+            <select id="list-select" class="add-to-list__select" required></select>
+            <button type="submit" class="add-to-list__btn">Ajouter</button>
+          </form>
+          <p id="add-to-list-msg" class="add-to-list__msg" aria-live="polite"></p>
+        </section>
+      </div>
+
+    </section>
+
+    <section class="comments-section" aria-label="Commentaires">
+      <h2 class="comments-section__title">Commentaires</h2>
+
+      <form id="comment-form" class="comment-form" hidden novalidate>
+        <label for="comment-input" class="sr-only">Votre commentaire</label>
+        <textarea
+          id="comment-input"
+          class="comment-form__input"
+          rows="3"
+          placeholder="Écrivez votre commentaire (10 à 750 caractères)..."
+          required
+        ></textarea>
+        <button type="submit" class="comment-form__btn">Publier</button>
+        <p id="comment-error" class="auth-error" role="alert" aria-live="assertive"></p>
+      </form>
+
+      <ul id="comments-list" class="comments-list" aria-label="Liste des commentaires"></ul>
+      <p id="comments-status" class="status" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <script type="module" src="/js/pages/detailBook.js"></script>
+
+</body>
+</html>

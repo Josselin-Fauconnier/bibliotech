@@ -20,3 +20,25 @@ export async function searchBooks(query: string): Promise<SearchResponse> {
 
   return response.json();
 }
+
+
+export interface WorkDetail {
+  title: string;
+  description?: string | {value: string} ;
+  covers?: number[];
+  authors?: {author: { key: string}} [];
+  first_publish_date?: string;
+}
+
+export async function getWorkDetails(id: string) : Promise<WorkDetail> {
+  const res = await fetch(`https://openlibrary.org/works/${id}.json`);
+  if (!res.ok) throw new Error('Le livre est introuvable.');
+  return res.json();
+}
+
+export async function getAuthorName(key: string): Promise<string> {
+  const res = await fetch(`https://openlibrary.org${key}.json`);
+  if (!res.ok) return "l'auteur n'est pas connue";
+  const data = await res.json();
+  return data.name ?? "l'auteur n'est pas connue";
+}

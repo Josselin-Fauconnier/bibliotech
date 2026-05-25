@@ -41,7 +41,7 @@ function createBookCard(book) {
     const card = document.createElement('article');
     card.className = 'book-card';
     const link = document.createElement('a');
-    link.href = `/html/detail.html?id=${workId}`;
+    link.href = `/html/detailBook.html?id=${workId}`;
     link.className = 'book-card__link';
     if (book.cover_i) {
         const img = document.createElement('img');

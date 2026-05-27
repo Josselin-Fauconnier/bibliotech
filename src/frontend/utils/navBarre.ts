@@ -13,6 +13,7 @@ export function initNav() {
 
   nav.innerHTML = `
     <span class="nav__username">Bonjour, ${username}</span>
+    <a href="/html/books.html" class="nav__link">Rechercher</a>
     <a href="/html/lists.html" class="nav__link">Mes listes</a>
     <button id="logout-btn" class="nav__logout">Se déconnecter</button>
   `;

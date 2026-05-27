@@ -242,6 +242,23 @@ img {
   transform: translateY(-2px);
 }
 
+.book-card__remove {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  background: var(--color-error);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition);
+  min-height: 44px;
+}
+
+.book-card__remove:hover {
+  opacity: 0.75;
+}
+
 .book-card__link {
   display: flex;
   flex-direction: row;
@@ -527,6 +544,23 @@ img {
 }
 
 .list-card__delete:hover {
+  opacity: 0.75;
+}
+
+/* =============================================
+   LIEN RETOUR
+   ============================================= */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.back-link:hover {
   opacity: 0.75;
 }
 

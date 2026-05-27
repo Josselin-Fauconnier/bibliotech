@@ -31,14 +31,15 @@ export interface WorkDetail {
 }
 
 export async function getWorkDetails(id: string) : Promise<WorkDetail> {
-  const res = await fetch(`https://openlibrary.org/works/${id}.json`);
+  const res = await fetch(`/api/books/work/${id}`);
   if (!res.ok) throw new Error('Le livre est introuvable.');
   return res.json();
 }
 
 export async function getAuthorName(key: string): Promise<string> {
-  const res = await fetch(`https://openlibrary.org${key}.json`);
-  if (!res.ok) return "l'auteur n'est pas connue";
+  const id = key.replace('/authors/', '');
+  const res = await fetch(`/api/books/author/${id}`);
+  if (!res.ok) return 'Auteur introuvable';
   const data = await res.json();
-  return data.name ?? "l'auteur n'est pas connue";
+  return data.name ?? 'Nom non renseigné';
 }

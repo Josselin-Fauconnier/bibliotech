@@ -32,10 +32,12 @@ async function loadLists(container, errorEl) {
         const card = document.createElement('div');
         card.className = 'list-card';
         card.innerHTML = `
-      <div class="list-card__info">
-        <h2 class="list-card__name">${list.name}</h2>
-        ${list.description ? `<p class="list-card__desc">${list.description}</p>` : ''}
-      </div>
+      <a class="list-card__link" href="/html/listDetail.html?id=${list.id}">
+        <div class="list-card__info">
+          <h2 class="list-card__name">${list.name}</h2>
+          ${list.description ? `<p class="list-card__desc">${list.description}</p>` : ''}
+        </div>
+      </a>
       <button class="list-card__delete" data-id="${list.id}" aria-label="Supprimer la liste ${list.name}">
         Supprimer
       </button>

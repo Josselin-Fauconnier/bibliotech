@@ -9,3 +9,27 @@ booksRouter.get('/', async (req, res) => {
 
   res.json(data);
 });
+
+booksRouter.get('/work/:id', async (req, res) => {
+  const response = await fetch(`https://openlibrary.org/works/${req.params.id}.json`);
+
+  if (!response.ok) {
+    res.status(response.status).json({ message: 'Livre introuvable' });
+    return;
+  }
+
+  const data = await response.json();
+  res.json(data);
+});
+
+booksRouter.get('/author/:key', async (req, res) => {
+  const response = await fetch(`https://openlibrary.org/authors/${req.params.key}.json`);
+
+  if (!response.ok) {
+    res.status(response.status).json({ message: 'Auteur introuvable' });
+    return;
+  }
+
+  const data = await response.json();
+  res.json(data);
+});

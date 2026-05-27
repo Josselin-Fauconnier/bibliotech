@@ -22,6 +22,18 @@ booksRouter.get('/work/:id', async (req, res) => {
   res.json(data);
 });
 
+booksRouter.get('/trending', async (_req, res) => {
+  const response = await fetch('https://openlibrary.org/trending/daily.json?limit=20');
+
+  if (!response.ok) {
+    res.status(response.status).json({ message: 'Impossible de récupérer les tendances' });
+    return;
+  }
+
+  const data = await response.json();
+  res.json(data);
+});
+
 booksRouter.get('/author/:key', async (req, res) => {
   const response = await fetch(`https://openlibrary.org/authors/${req.params.key}.json`);
 

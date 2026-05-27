@@ -1,4 +1,4 @@
-import { searchBooks , BookDoc} from '../api/backend.js';
+import { searchBooks, getTrendingBooks, BookDoc} from '../api/backend.js';
 import { initNav } from '../utils/navBarre.js';
 
 initNav();
@@ -15,6 +15,26 @@ searchForm.addEventListener('submit', (e) => {
     loadBooks(query);
   }
 });
+
+async function loadTrending(): Promise<void> {
+  setStatus('Chargement des livres du moment...', false);
+
+  try {
+    const data = await getTrendingBooks();
+
+    if (data.docs.length === 0) {
+      setStatus('', false);
+      return;
+    }
+
+    setStatus('Livres du moment', false);
+    renderBooks(data.docs);
+  } catch {
+    setStatus('', false);
+  }
+}
+
+loadTrending();
 
 async function loadBooks(query: string ) : Promise<void> {
     setStatus('Chargement..', false);

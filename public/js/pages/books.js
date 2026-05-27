@@ -1,4 +1,4 @@
-import { searchBooks } from '../api/backend.js';
+import { searchBooks, getTrendingBooks } from '../api/backend.js';
 import { initNav } from '../utils/navBarre.js';
 initNav();
 const searchForm = document.querySelector('#search-form');
@@ -12,6 +12,22 @@ searchForm.addEventListener('submit', (e) => {
         loadBooks(query);
     }
 });
+async function loadTrending() {
+    setStatus('Chargement des livres du moment...', false);
+    try {
+        const data = await getTrendingBooks();
+        if (data.docs.length === 0) {
+            setStatus('', false);
+            return;
+        }
+        setStatus('Livres du moment', false);
+        renderBooks(data.docs);
+    }
+    catch {
+        setStatus('', false);
+    }
+}
+loadTrending();
 async function loadBooks(query) {
     setStatus('Chargement..', false);
     booksGrid.innerHTML = "";

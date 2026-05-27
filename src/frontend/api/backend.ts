@@ -11,6 +11,17 @@ interface SearchResponse {
   numFound: number;
 }
 
+export async function getTrendingBooks(): Promise<SearchResponse> {
+  const response = await fetch('/api/books/trending');
+
+  if (!response.ok) {
+    throw new Error(`Erreur serveur : ${response.status}`);
+  }
+
+  const data = await response.json();
+  return { docs: data.works ?? [], numFound: data.works?.length ?? 0 };
+}
+
 export async function searchBooks(query: string): Promise<SearchResponse> {
   const response = await fetch(`/api/books?q=${encodeURIComponent(query)}`);
 

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { CommentSchema } from '../../shared/schemas/comment-schema';
-import { getCommentsByBooks, createComment, deleteComment } from '../models/comment-model';
+import { getCommentsByBooks, createComment, deleteComment, updateComment } from '../models/comment-model';
 
 export async function getComments(req: Request, res: Response) {
   const bookId = String(req.params.bookId);
@@ -36,4 +36,26 @@ export async function deleteCommentHandler(req: Request, res: Response) {
   }
 
   res.status(204).send();
+}
+
+export async function updateCommentHandler(req: Request, res: Response) {
+  const commentId = Number(req.params.id);
+  if (isNaN(commentId)) {
+    res.status(400).json({ message: "l'ID n'est pas valide" });
+    return;
+  }
+
+  const parsed = CommentSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ errors: z.flattenError(parsed.error).fieldErrors });
+    return;
+  }
+
+  const updated = await updateComment(commentId, req.user!.userId, parsed.data.content);
+  if (!updated) {
+    res.status(404).json({ message: "le commentaire n'existe pas" });
+    return;
+  }
+
+  res.json({ message: 'Commentaire modifié' });
 }

@@ -34,3 +34,11 @@ export async function deleteComment(
   );
   return result.affectedRows > 0;
 }
+
+export async function updateComment(commentId: number, userId: number, content: string): Promise<boolean> {
+  const [result] = await db.execute<ResultSetHeader>(
+    'UPDATE comments SET content = ? WHERE id = ? AND user_id = ?',
+    [content, commentId, userId]
+  );
+  return result.affectedRows > 0;
+}

@@ -691,6 +691,26 @@ img {
 }
 
 /* =============================================
+   BOUTON UTILITAIRE (base partagée)
+   ============================================= */
+.btn {
+  padding: 0.75rem var(--space-xl);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity var(--transition);
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  opacity: 0.75;
+}
+
+/* =============================================
    COMMENTAIRES
    ============================================= */
 .comments-section {
@@ -731,20 +751,7 @@ img {
 
 .comment-form__btn {
   align-self: flex-start;
-  padding: 0.75rem var(--space-xl);
-  font-size: var(--font-size-base);
-  font-weight: 600;
   background: var(--color-accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: opacity var(--transition);
-  min-height: 44px;
-}
-
-.comment-form__btn:hover {
-  opacity: 0.75;
 }
 
 .comments-list {
@@ -779,4 +786,31 @@ img {
 .comment-item__date {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
+}
+
+.comment-item__actions {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+  align-self: flex-start;
+}
+
+.comment-item__actions .btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem var(--space-md);
+}
+
+.comment-item > .btn {
+  padding: 0.5rem var(--space-md);
+  align-self: flex-start;
+}
+
+.comment-item__delete {
+  background: var(--color-error);
+}
+
+.comment-item__edit, .comment-item__save {
+  background: #276749;
 }

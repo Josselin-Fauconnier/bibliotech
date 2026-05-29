@@ -109,6 +109,57 @@ async function loadComments(): Promise<void> {
     li.appendChild(author);
     li.appendChild(content);
     li.appendChild(date);
+
+    const currentUser = localStorage.getItem('username');
+    if (currentUser && currentUser === comment.username) {
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'btn comment-item__delete';
+      deleteBtn.textContent = 'Supprimer';
+      deleteBtn.addEventListener('click', async () => {
+        const res = await fetch(`/api/comments/${comment.id}`, {
+          method: 'DELETE',
+          credentials: 'include',
+        });
+        if (res.ok) li.remove();
+      });
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'btn comment-item__edit';
+      editBtn.textContent = 'Éditer';
+      editBtn.addEventListener('click', () => {
+        const textarea = document.createElement('textarea');
+        textarea.className = 'comment-form__input';
+        textarea.value = comment.content;
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'btn comment-item__save';
+        saveBtn.textContent = 'Enregistrer';
+        saveBtn.addEventListener('click', async () => {
+          const res = await fetch(`/api/comments/${comment.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ content: textarea.value.trim() }),
+          });
+          if (res.ok) {
+            comment.content = textarea.value.trim();
+            content.textContent = textarea.value.trim();
+            textarea.remove();
+            saveBtn.remove();
+          }
+        });
+
+        li.appendChild(textarea);
+        li.appendChild(saveBtn);
+      });
+
+      const actions = document.createElement('div');
+      actions.className = 'comment-item__actions';
+      actions.appendChild(deleteBtn);
+      actions.appendChild(editBtn);
+      li.appendChild(actions);
+    }
+
     commentsList.appendChild(li);
   }
 }

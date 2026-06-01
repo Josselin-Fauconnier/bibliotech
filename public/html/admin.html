@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard </title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+  <nav id="main-nav" class="nav"></nav>
+
+  <main class="main">
+    <h1 class="page-title">Dashboard Admin</h1>
+
+    <div class="admin-grid">
+
+      <section class="admin-section">
+        <h2 class="admin-section__title">Utilisateurs</h2>
+        <p id="users-status" class="status" aria-live="polite"></p>
+        <table id="users-table" class="admin-table">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Rôle</th>
+              <th>Inscription</th>
+            </tr>
+          </thead>
+          <tbody id="users-body"></tbody>
+        </table>
+        <div id="users-pagination" class="pagination"></div>
+      </section>
+
+      <section class="admin-section">
+        <h2 class="admin-section__title">Commentaires</h2>
+        <p id="comments-status" class="status" aria-live="polite"></p>
+        <table id="comments-table" class="admin-table">
+          <thead>
+            <tr>
+              <th>Utilisateur</th>
+              <th>Livre</th>
+              <th>Commentaire</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="comments-body"></tbody>
+        </table>
+        <div id="comments-pagination" class="pagination"></div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script type="module" src="/js/pages/admin.js"></script>
+
+</body>
+</html>

@@ -28,7 +28,7 @@ form.addEventListener('submit', async (e) => {
         }
         localStorage.setItem('role', data.role);
         localStorage.setItem('username', data.username);
-        window.location.href = '/html/books.html';
+        window.location.href = data.role === 'admin' ? '/html/admin.html' : '/html/books.html';
     }
     catch {
         errorEl.textContent = 'Impossible de contacter le serveur';

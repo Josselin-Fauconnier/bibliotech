@@ -9,10 +9,12 @@ export function initNav() {
     `;
         return;
     }
+    const role = localStorage.getItem('role');
     nav.innerHTML = `
     <span class="nav__username">Bonjour, ${username}</span>
     <a href="/html/books.html" class="nav__link">Rechercher</a>
     <a href="/html/lists.html" class="nav__link">Mes listes</a>
+    ${role === 'admin' ? `<a href="/html/admin.html" class="nav__link">Dashboard</a>` : ''}
     <button id="logout-btn" class="nav__logout">Se déconnecter</button>
   `;
     document.getElementById('logout-btn')?.addEventListener('click', async () => {

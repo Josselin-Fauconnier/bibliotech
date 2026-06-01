@@ -5,6 +5,7 @@ import { booksRouter} from './routes/books-routes'
 import { authRouter } from './routes/auth-routes'
 import { listsRouters } from './routes/lists-routes';
 import { commentsRouter } from './routes/comments_routes';
+import { adminRouter } from './routes/admin-routes';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use('/api/books', booksRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/lists',listsRouters);
 app.use('/api/comments', commentsRouter);
+app.use('/api/admin', adminRouter);
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);

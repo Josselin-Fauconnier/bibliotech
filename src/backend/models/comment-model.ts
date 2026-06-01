@@ -42,3 +42,11 @@ export async function updateComment(commentId: number, userId: number, content: 
   );
   return result.affectedRows > 0;
 }
+
+export async function deleteCommentAdmin(commentId: number): Promise<boolean> {
+  const [result] = await db.execute<ResultSetHeader>(
+    'DELETE FROM comments WHERE id = ?',
+    [commentId]
+  );
+  return result.affectedRows > 0;
+}

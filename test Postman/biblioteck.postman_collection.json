@@ -2199,6 +2199,518 @@
           "body": "{\n    \"message\": \"le commentaire n'existe pas\"\n}"
         }
       ]
+    },
+    {
+      "name": "connextion admin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "connextion admin",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"test@test.fr\",\r\n  \"password\": \"Passpass!9213\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MDA1NzE1OCwiZXhwIjoxNzgwMDc4NzU4fQ.5bCzU0JMINDezdTSI9cpgHa7pq_U95z2hKucYDFJWq4; Max-Age=43200; Path=/; Expires=Sat, 30 May 2026 00:19:18 GMT; HttpOnly; SameSite=Strict"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "34"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"22-45uA97dwqoh3v5QlEFWj3SN0SXs\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 29 May 2026 12:19:18 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"role\": \"admin\",\n    \"username\": \"test\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "voir liste",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/admin/users?page=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "admin",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "voir liste",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/admin/users?page=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "492"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"1ec-zUAdy0fhymVmTL7yPFnwfythxd4\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 29 May 2026 12:26:53 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"username\": \"Harepin\",\n            \"email\": \"Harepin@test.fr\",\n            \"role\": \"user\",\n            \"created_at\": \"2026-05-25T14:08:43.000Z\"\n        },\n        {\n            \"id\": 3,\n            \"username\": \"test\",\n            \"email\": \"test@test.fr\",\n            \"role\": \"admin\",\n            \"created_at\": \"2026-05-18T08:55:49.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"Josselin\",\n            \"email\": \"fauconnonierjosselin@yahoo.fr\",\n            \"role\": \"user\",\n            \"created_at\": \"2026-05-15T13:34:34.000Z\"\n        },\n        {\n            \"id\": 1,\n            \"username\": \"Livre\",\n            \"email\": \"Biblio@test.com\",\n            \"role\": \"user\",\n            \"created_at\": \"2026-05-13T14:36:20.000Z\"\n        }\n    ],\n    \"page\": 1,\n    \"total\": 4,\n    \"totalPages\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "list commentaire",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/admin/comments?page=1\n\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "admin",
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1\n\n"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "list commentaire",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/admin/comments?page=1\n\n",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "admin",
+                "comments"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1\n\n"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "175"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"af-ULIowH7HZFq/rklNdC+udeGItw4\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 29 May 2026 12:34:20 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"content\": \"C'est vrai pourquoi lui ?\",\n            \"created_at\": \"2026-05-27T12:25:40.000Z\",\n            \"book_id\": \"OL8967837W\",\n            \"username\": \"Harepin\"\n        }\n    ],\n    \"page\": 1,\n    \"total\": 1,\n    \"totalPages\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "suppri message",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/admin/comments/3\n",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "admin",
+            "comments",
+            "3\n"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "suppri message",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/admin/comments/3\n",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "admin",
+                "comments",
+                "3\n"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 29 May 2026 12:54:48 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "tentative acces sans admin",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:3023/api/admin/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3023",
+          "path": [
+            "api",
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "tentative acces sans admin",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:3023/api/admin/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3023",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "http://localhost:3023"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "47"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2f-xEMr9JixmC3ru9k+lEDfmW6iUGQ\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 29 May 2026 13:54:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Cet accès ne vous est pas permis\"\n}"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,124 @@
+/* =============================================
+   FORMULAIRE DE CRÉATION DE LISTE
+   ============================================= */
+.form-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 500px;
+  margin-bottom: var(--space-xl);
+}
+
+.form-list__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-list__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-list__input {
+  width: 100%;
+  padding: 0.75rem var(--space-md);
+  font-size: var(--font-size-base);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition);
+  min-height: 44px;
+}
+
+.form-list__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.form-list__btn {
+  width: 100%;
+  padding: 0.75rem var(--space-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity var(--transition);
+  min-height: 44px;
+}
+
+.form-list__btn:hover {
+  opacity: 0.75;
+}
+
+.form-list__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =============================================
+   CARTES DE LISTES
+   ============================================= */
+.lists-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.list-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.list-card__link {
+  flex: 1;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.list-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.list-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.list-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.list-card__delete {
+  flex-shrink: 0;
+  padding: 0.5rem var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  background: var(--color-error);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity var(--transition);
+  min-height: 44px;
+}
+
+.list-card__delete:hover {
+  opacity: 0.75;
+}

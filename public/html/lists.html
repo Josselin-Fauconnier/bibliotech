@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mes listes</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/lists.css">
 </head>
 <body>
 
@@ -17,19 +18,19 @@
 
     <h1 class="page-title">Mes listes de lecture</h1>
 
-    <form id="create-list-form" class="auth-form list-create-form" novalidate>
-      <div class="auth-form__field">
-        <label for="list-name" class="auth-form__label">Nom de la liste</label>
+    <form id="create-list-form" class="form-list" novalidate>
+      <div class="form-list__field">
+        <label for="list-name" class="form-list__label">Nom de la liste</label>
         <input
           type="text"
           id="list-name"
           name="list-name"
-          class="auth-form__input"
+          class="form-list__input"
           placeholder="Ex : Livres à lire..."
           required
         >
       </div>
-      <button type="submit" class="auth-form__btn">Créer la liste</button>
+      <button type="submit" class="form-list__btn">Créer la liste</button>
     </form>
 
     <p id="list-error" class="auth-error" role="alert" aria-live="assertive"></p>

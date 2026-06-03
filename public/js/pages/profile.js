@@ -66,18 +66,23 @@ function renderComments(comments) {
     content.className = 'comment-item__content';
     content.textContent = comment.content;
 
-    const meta = document.createElement('span');
-    meta.className = 'comment-item__date';
-    meta.textContent = new Date(comment.created_at).toLocaleDateString('fr-FR');
+    const meta = document.createElement('div');
+    meta.className = 'comment-item__meta';
+
+    const date = document.createElement('span');
+    date.className = 'comment-item__date';
+    date.textContent = new Date(comment.created_at).toLocaleDateString('fr-FR');
 
     const link = document.createElement('a');
     link.className = 'comment-item__link';
     link.href = `/html/detailBook.html?id=${comment.book_id}`;
-    link.textContent = 'Voir le livre';
+    link.textContent = 'Voir le livre →';
+
+    meta.appendChild(date);
+    meta.appendChild(link);
 
     li.appendChild(content);
     li.appendChild(meta);
-    li.appendChild(link);
     commentsList.appendChild(li);
   }
 }

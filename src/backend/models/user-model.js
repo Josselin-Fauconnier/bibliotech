@@ -2,7 +2,7 @@ import { db } from '../db.js';
 
 export async function findUserByEmail(email) {
   const [rows] = await db.execute(
-    'SELECT id, username, email, password, role FROM users WHERE email = ? AND deleted_at IS NULL',
+   'SELECT id, username, email, password, role, banned_at, banned_until, ban_reason FROM users WHERE email = ? AND deleted_at IS NULL',
     [email]
   );
   return rows[0] ?? null;
@@ -42,7 +42,7 @@ export async function logFailedAttempt(ip, email) {
 
 export async function findUserById(userId) {
   const [rows] = await db.execute(
-    'SELECT id, username, email, password FROM users WHERE id = ? AND deleted_at IS NULL',
+    'SELECT id, username, email, password, banned_at, banned_until FROM users WHERE id = ? AND deleted_at IS NULL',
     [userId]
   );
   return rows[0] ?? null;

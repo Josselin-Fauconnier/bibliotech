@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { CommentSchema } from '../../shared/schemas/comment-schema.js';
-import { getCommentsByBooks, createComment, deleteComment, updateComment } from '../models/comment-model.js';
+import { getCommentsByBooks, createComment, deleteComment, updateComment, getLastTimeComment } from '../models/comment-model.js';
 
 export async function getComments(req, res) {
   const bookId = String(req.params.bookId);
@@ -13,6 +13,23 @@ export async function createCommentHandler(req, res) {
   if (!parsed.success) {
     res.status(400).json({ errors: z.flattenError(parsed.error).fieldErrors });
     return;
+  }
+
+  const lastComment = await getLastTimeComment(req.user.userId);
+  if (lastComment) {
+    const diff = Date.now() - new Date(lastComment).getTime();
+    if (diff < 300000) {
+      const totalSeconds = Math.ceil((300000 - diff) / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const remaining = minutes > 0
+        ? `${minutes} minute${minutes > 1 ? 's' : ''} et ${seconds} seconde${seconds > 1 ? 's' : ''}`
+        : `${seconds} seconde${seconds > 1 ? 's' : ''}`;
+      res.status(429).json({
+        message: `Vous devez attendre ${remaining} avant de poster un nouveau commentaire.`,
+      });
+      return;
+    }
   }
 
   const bookId = String(req.params.bookId);

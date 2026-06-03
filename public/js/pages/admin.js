@@ -15,8 +15,56 @@ const commentsBody       = document.getElementById('comments-body');
 const commentsStatus     = document.getElementById('comments-status');
 const commentsPagination = document.getElementById('comments-pagination');
 
+const bannedTempBody       = document.getElementById('banned-temp-body');
+const bannedTempStatus     = document.getElementById('banned-temp-status');
+const bannedTempPagination = document.getElementById('banned-temp-pagination');
+
+const bannedPermBody       = document.getElementById('banned-perm-body');
+const bannedPermStatus     = document.getElementById('banned-perm-status');
+const bannedPermPagination = document.getElementById('banned-perm-pagination');
+
 let usersPage    = 1;
 let commentsPage = 1;
+let bannedTempPage = 1;
+let bannedPermPage = 1;
+
+let pendingBanUserId = null;
+const banModal    = document.getElementById('ban-modal');
+const banReason   = document.getElementById('ban-reason');
+const banDuration = document.getElementById('ban-duration');
+
+document.getElementById('ban-cancel').addEventListener('click', () => {
+  banModal.classList.add('hidden');
+  pendingBanUserId = null;
+});
+
+document.getElementById('ban-confirm').addEventListener('click', async () => {
+  const res = await fetch(`/api/admin/users/${pendingBanUserId}/ban`, {
+    method: 'PATCH',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      reason: banReason.value || null,
+      duration_days: banDuration.value ? Number(banDuration.value) : null,
+    }),
+  });
+  if (res.ok) {
+    banModal.classList.add('hidden');
+    loadUsers();
+    loadBannedTemp();
+    loadBannedPerm();
+  }
+});
+
+function timeRemaining(bannedUntil) {
+  if (!bannedUntil) return 'Permanent';
+  const diff = new Date(bannedUntil) - new Date();
+  if (diff <= 0) return 'Expiré';
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  if (days > 0) return `${days}j ${hours}h`;
+  return `${hours}h`;
+}
 
 function renderPagination(container, currentPage, totalPages, onPageChange) {
   container.innerHTML = '';
@@ -67,6 +115,21 @@ async function loadUsers() {
       <td>${user.role}</td>
       <td>${new Date(user.created_at).toLocaleDateString('fr-FR')}</td>
     `;
+
+    const banBtn = document.createElement('button');
+    banBtn.className = 'admin-delete-btn';
+    banBtn.textContent = 'Bannir';
+    banBtn.addEventListener('click', () => {
+      pendingBanUserId = user.id;
+      banReason.value = '';
+      banDuration.value = '';
+      banModal.classList.remove('hidden');
+    });
+
+    const actionTd = document.createElement('td');
+    actionTd.appendChild(banBtn);
+    tr.appendChild(actionTd);
+
     usersBody.appendChild(tr);
   }
 
@@ -129,5 +192,80 @@ async function loadComments() {
   });
 }
 
+async function loadBannedTemp() {
+  bannedTempStatus.textContent = 'Chargement...';
+  bannedTempBody.innerHTML = '';
+
+  const res = await fetch(`/api/admin/banned-users?type=temp&page=${bannedTempPage}`, {
+    credentials: 'include',
+  });
+
+  if (!res.ok) {
+    bannedTempStatus.textContent = 'Impossible de charger.';
+    return;
+  }
+
+  const { data, totalPages } = await res.json();
+  bannedTempStatus.textContent = '';
+
+  if (data.length === 0) {
+    bannedTempStatus.textContent = 'Aucun banni temporaire.';
+    return;
+  }
+
+  for (const user of data) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${user.username}</td>
+      <td>${user.ban_reason ?? '—'}</td>
+      <td>${timeRemaining(user.banned_until)}</td>
+    `;
+    bannedTempBody.appendChild(tr);
+  }
+
+  renderPagination(bannedTempPagination, bannedTempPage, totalPages, (page) => {
+    bannedTempPage = page;
+    loadBannedTemp();
+  });
+}
+
+async function loadBannedPerm() {
+  bannedPermStatus.textContent = 'Chargement...';
+  bannedPermBody.innerHTML = '';
+
+  const res = await fetch(`/api/admin/banned-users?type=permanent&page=${bannedPermPage}`, {
+    credentials: 'include',
+  });
+
+  if (!res.ok) {
+    bannedPermStatus.textContent = 'Impossible de charger.';
+    return;
+  }
+
+  const { data, totalPages } = await res.json();
+  bannedPermStatus.textContent = '';
+
+  if (data.length === 0) {
+    bannedPermStatus.textContent = 'Aucun banni définitif.';
+    return;
+  }
+
+  for (const user of data) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${user.username}</td>
+      <td>${user.ban_reason ?? '—'}</td>
+    `;
+    bannedPermBody.appendChild(tr);
+  }
+
+  renderPagination(bannedPermPagination, bannedPermPage, totalPages, (page) => {
+    bannedPermPage = page;
+    loadBannedPerm();
+  });
+}
+
 loadUsers();
 loadComments();
+loadBannedTemp();
+loadBannedPerm();

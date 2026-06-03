@@ -28,12 +28,48 @@
               <th>Nom</th>
               <th>Rôle</th>
               <th>Inscription</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody id="users-body"></tbody>
         </table>
         <div id="users-pagination" class="pagination"></div>
       </section>
+
+      <div class="banned-split">
+
+        <section class="admin-section">
+          <h2 class="admin-section__title">Bannis temporairement</h2>
+          <p id="banned-temp-status" class="status" aria-live="polite"></p>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Pseudo</th>
+                <th>Raison</th>
+                <th>Temps restant</th>
+              </tr>
+            </thead>
+            <tbody id="banned-temp-body"></tbody>
+          </table>
+          <div id="banned-temp-pagination" class="pagination"></div>
+        </section>
+
+        <section class="admin-section">
+          <h2 class="admin-section__title">Bannis définitivement</h2>
+          <p id="banned-perm-status" class="status" aria-live="polite"></p>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Pseudo</th>
+                <th>Raison</th>
+              </tr>
+            </thead>
+            <tbody id="banned-perm-body"></tbody>
+          </table>
+          <div id="banned-perm-pagination" class="pagination"></div>
+        </section>
+
+      </div>
 
       <section class="admin-section">
         <h2 class="admin-section__title">Commentaires</h2>
@@ -56,6 +92,22 @@
     </div>
 
   </main>
+
+  <div id="ban-modal" class="modal hidden">
+    <div class="modal__box">
+      <h3>Bannir l'utilisateur</h3>
+      <label>Raison
+        <input id="ban-reason" type="text" placeholder="spam, abus...">
+      </label>
+      <label>Durée (jours, vide = permanent)
+        <input id="ban-duration" type="number" min="1" placeholder="ex: 7">
+      </label>
+      <div class="modal__actions">
+        <button id="ban-cancel">Annuler</button>
+        <button id="ban-confirm">Confirmer</button>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="/js/pages/admin.js"></script>
 

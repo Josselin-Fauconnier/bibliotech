@@ -23,7 +23,7 @@ export async function register(req, res) {
   const userId = await createUser(username, email, hashedPassword);
   await logUserEvent('register', userId);
 
-  res.status(201).json({ message: ' le Compte  a été crée' });
+  res.status(201).json({ message: ' le Compte  a bien été crée' });
 }
 
 export async function login(req, res) {
@@ -49,6 +49,17 @@ export async function login(req, res) {
   if (!user || !valid) {
     await logFailedAttempt(ip, email);
     res.status(401).json({ message: "l'identifiant n'est pas connu" });
+    return;
+  }
+
+  const now = new Date();
+  if (user.banned_at && (!user.banned_until || user.banned_until > now)) {
+    const until = user.banned_until
+      ? `jusqu'au ${new Date(user.banned_until).toLocaleDateString('fr-FR')}`
+      : 'définitivement';
+    res.status(403).json({
+      message: `Compte banni ${until}. Raison : ${user.ban_reason ?? 'non précisée'}`,
+    });
     return;
   }
 

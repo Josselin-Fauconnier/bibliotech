@@ -43,3 +43,12 @@ export async function deleteCommentAdmin(commentId) {
   );
   return result.affectedRows > 0;
 }
+
+
+export async function getLastTimeComment(userId) {
+  const [rows] = await db.execute (
+    'SELECT created_at FROM comments WHERE user_id = ? ORDER BY created_at DESC LIMIT 1',
+    [userId]
+  );
+  return rows[0]?.created_at ?? null;
+}

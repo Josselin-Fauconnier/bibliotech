@@ -20,9 +20,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-app.get('/', (_req, res) => {
-  res.json({ message: ' Projet BiblioTech API' });
-});
 
 const PORT = process.env.PORT || 3023;
 

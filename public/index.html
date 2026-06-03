@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiblioTech — Votre bibliothèque en ligne</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/books.css">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+  <nav id="main-nav" class="nav"></nav>
+
+  <main class="main">
+
+    <section class="hero">
+      <h1 class="hero__title">Votre bibliothèque en ligne</h1>
+      <p class="hero__subtitle">Découvrez des millions  de livres et  organisez vos lectures.</p>
+
+      <form id="search-form" class="search-form hero__search" role="search">
+        <label for="search-input" class="sr-only">Rechercher un livre</label>
+        <input
+          type="search"
+          id="search-input"
+          class="search-form__input"
+          placeholder="Titre, auteur, ISBN..."
+          autocomplete="off"
+        >
+        <button type="submit" class="search-form__btn">Rechercher</button>
+      </form>
+    </section>
+
+    <section class="trending">
+      <h2 class="section-title">Livres du moment</h2>
+      <p id="status-message" class="status" aria-live="polite"></p>
+      <div id="books-grid" class="books-grid" role="list"></div>
+    </section>
+
+  </main>
+
+  <script type="module" src="/js/pages/index.js"></script>
+
+</body>
+</html>

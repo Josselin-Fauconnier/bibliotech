@@ -1,72 +1,35 @@
-import { searchBooks, getTrendingBooks } from '../api/backend.js';
+import { getTrendingBooks } from '../api/backend.js';
 import { initNav } from '../utils/navBarre.js';
 
 initNav();
 
-const searchForm  = document.querySelector('#search-form');
+const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const booksGrid   = document.querySelector('#books-grid');
 const statusEl    = document.querySelector('#status-message');
 
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const query = searchInput.value.trim();
-  if (query) {
-    loadBooks(query);
-  }
+  const q = searchInput.value.trim();
+  if (q) window.location.href = `/html/books.html?q=${encodeURIComponent(q)}`;
 });
 
 async function loadTrending() {
   setStatus('Chargement des livres du moment...', false);
-
   try {
     const data = await getTrendingBooks();
-
-    if (data.docs.length === 0) {
-      setStatus('', false);
-      return;
-    }
-
-    setStatus('Livres du moment', false);
+    if (data.docs.length === 0) { setStatus('', false); return; }
+    setStatus('', false);
     renderBooks(data.docs);
   } catch {
-    setStatus('', false);
+    setStatus('Impossible de charger les livres du moment.', true);
   }
 }
 
-const params = new URLSearchParams(window.location.search);
-const preQuery = params.get('q');
-if (preQuery) {
-  searchInput.value = preQuery;
-  loadBooks(preQuery);
-} else {
-  loadTrending();
-}
-
-async function loadBooks(query) {
-  setStatus('Chargement..', false);
-  booksGrid.innerHTML = '';
-
-  try {
-    const data = await searchBooks(query);
-    const docs = data.docs;
-
-    if (docs.length === 0) {
-      setStatus('Aucun résultat  a été trouvé ', false);
-      return;
-    }
-
-    setStatus(`${docs.length} résultats affichés sur ${data.numFound} trouvés`, false);
-    renderBooks(docs);
-  } catch {
-    setStatus('Il y a eu une erreur ', true);
-  }
-}
+loadTrending();
 
 function renderBooks(docs) {
-  for (const book of docs) {
-    booksGrid.appendChild(createBookCard(book));
-  }
+  for (const book of docs) booksGrid.appendChild(createBookCard(book));
 }
 
 function createBookCard(book) {

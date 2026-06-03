@@ -17,6 +17,7 @@ export function initNav() {
     <span class="nav__username">Bonjour, ${username}</span>
     <a href="/html/books.html" class="nav__link">Rechercher</a>
     <a href="/html/lists.html" class="nav__link">Mes listes</a>
+    <a href="/html/profile.html" class="nav__link">Mon profil</a>
     ${role === 'admin' ? `<a href="/html/admin.html" class="nav__link">Dashboard</a>` : ''}
     <button id="logout-btn" class="nav__logout">Se déconnecter</button>
   `;

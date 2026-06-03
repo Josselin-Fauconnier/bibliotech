@@ -6,6 +6,7 @@ import { authRouter } from './routes/auth-routes.js';
 import { listsRouters } from './routes/lists-routes.js';
 import { commentsRouter } from './routes/comments_routes.js';
 import { adminRouter } from './routes/admin-routes.js';
+import { userRouter } from './routes/user-routes.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/lists', listsRouters);
 app.use('/api/comments', commentsRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/users', userRouter);
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);

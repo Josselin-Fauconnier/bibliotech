@@ -38,3 +38,51 @@ export async function logFailedAttempt(ip, email) {
     [ip, email]
   );
 }
+
+
+export async function findUserById(userId) {
+  const [rows] = await db.execute(
+    'SELECT id, username, email, password FROM users WHERE id = ? AND deleted_at IS NULL',
+    [userId]
+  );
+  return rows[0] ?? null;
+}
+
+export async function getUserById(userId) {
+  const [rows] = await db.execute(
+    'SELECT id, username, email, created_at FROM users WHERE id = ? AND deleted_at IS NULL',
+    [userId]
+  );
+  return rows[0] ?? null;
+}
+
+export async function updatePassword(userId, hashedPassword) {
+  const [result] = await db.execute(
+    'UPDATE users SET password = ? WHERE id = ? AND deleted_at IS NULL',
+    [hashedPassword, userId]
+  );
+  return result.affectedRows > 0;
+}
+
+export async function deleteUser(userId) {
+  const [result] = await db.execute(
+    'UPDATE users SET deleted_at = NOW() WHERE id = ? AND deleted_at IS NULL',
+    [userId]
+  );
+  return result.affectedRows > 0;
+}
+
+export async function getRecentCommentsByUser(userId, page, limit) {
+  const offset = (page - 1) * limit;
+  const [rows] = await db.execute(
+    `SELECT id, content, book_id, created_at FROM comments
+     WHERE user_id = ? ORDER BY created_at DESC
+     LIMIT ${limit} OFFSET ${offset}`,
+    [userId]
+  );
+  const [countRows] = await db.execute(
+    'SELECT COUNT(*) as total FROM comments WHERE user_id = ?',
+    [userId]
+  );
+  return { data: rows, total: countRows[0].total };
+}

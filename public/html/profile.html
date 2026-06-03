@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon profil — BiblioTech</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="site-name">BiblioTech</a>
+  </header>
+  <nav id="main-nav" class="nav"></nav>
+
+  <main class="main">
+    <h1 class="page-title">Mon profil</h1>
+
+    <div class="profile-grid">
+
+      <section class="profile-card" aria-label="Informations">
+        <h2 class="profile-card__title">Informations</h2>
+        <p id="profile-status" class="status" aria-live="polite"></p>
+        <dl class="profile-info">
+          <dt>Nom d'utilisateur</dt>
+          <dd id="profile-username"></dd>
+          <dt>Email</dt>
+          <dd id="profile-email"></dd>
+          <dt>Membre depuis</dt>
+          <dd id="profile-date"></dd>
+        </dl>
+      </section>
+
+      <section class="profile-card" aria-label="Changer le mot de passe">
+        <h2 class="profile-card__title">Changer le mot de passe</h2>
+        <form id="password-form" novalidate>
+          <div class="profile-field">
+            <label for="current-password">Mot de passe actuel</label>
+            <input type="password" id="current-password" class="profile-input" required>
+          </div>
+          <div class="profile-field">
+            <label for="new-password">Nouveau mot de passe</label>
+            <input type="password" id="new-password" class="profile-input" required>
+          </div>
+          <button type="submit" class="profile-btn">Modifier</button>
+          <p id="password-msg" class="profile-msg" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="profile-card profile-card--danger" aria-label="Supprimer le compte">
+        <h2 class="profile-card__title">Supprimer mon compte</h2>
+        <p class="profile-card__warning">Cette action est irréversible.</p>
+        <button id="delete-account-btn" class="profile-btn profile-btn--danger">Supprimer mon compte</button>
+        <p id="delete-msg" class="profile-msg" aria-live="polite"></p>
+      </section>
+
+    </div>
+
+    <section class="profile-comments" aria-label="Mes commentaires">
+      <h2 class="profile-card__title">Mes derniers commentaires</h2>
+      <p id="comments-status" class="status" aria-live="polite"></p>
+      <ul id="comments-list" class="comments-list"></ul>
+      <div id="comments-pagination" class="pagination"></div>
+    </section>
+
+  </main>
+
+  <script type="module" src="/js/pages/profile.js"></script>
+
+</body>
+</html>

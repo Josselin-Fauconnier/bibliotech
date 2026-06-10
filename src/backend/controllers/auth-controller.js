@@ -43,9 +43,7 @@ export async function login(req, res) {
   }
 
   const user = await findUserByEmail(email);
-  const fakeHash = '$2b$12$invalidhashusedfortimingonly............';
-  const hash = user?.password ?? fakeHash;
-  const valid = await bcrypt.compare(password, hash);
+  const valid = user ? await bcrypt.compare(password, user.password) : false;
   if (!user || !valid) {
     await logFailedAttempt(ip, email);
     res.status(401).json({ message: "l'identifiant n'est pas connu" });

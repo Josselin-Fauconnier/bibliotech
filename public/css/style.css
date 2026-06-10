@@ -34,6 +34,43 @@
 }
 
 /* =============================================
+   MODE SOMBRE
+   - Automatique si l'OS est en dark (sauf si l'user a forcé "light")
+   - Forcé si data-theme="dark" sur <html>
+   ============================================= */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary:       #4a7fcb;
+    --color-primary-light: #5a8fd5;
+    --color-nav:           #7c3aed;
+    --color-accent:        #f59e3a;
+    --color-bg:            #0f1117;
+    --color-surface:       #1a1d2e;
+    --color-text:          #e2e8f0;
+    --color-text-muted:    #a0aec0;
+    --color-border:        #2d3748;
+    --color-error:         #fc8181;
+    --shadow:              0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-hover:        0 6px 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-primary:       #4a7fcb;
+  --color-primary-light: #5a8fd5;
+  --color-nav:           #7c3aed;
+  --color-accent:        #f59e3a;
+  --color-bg:            #0f1117;
+  --color-surface:       #1a1d2e;
+  --color-text:          #e2e8f0;
+  --color-text-muted:    #a0aec0;
+  --color-border:        #2d3748;
+  --color-error:         #fc8181;
+  --shadow:              0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-hover:        0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* =============================================
    RESET
    ============================================= */
 * {
@@ -135,6 +172,21 @@ img {
 }
 
 .nav__logout:hover {
+  opacity: 0.75;
+}
+
+.nav__theme-toggle {
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  transition: opacity var(--transition);
+}
+
+.nav__theme-toggle:hover {
   opacity: 0.75;
 }
 

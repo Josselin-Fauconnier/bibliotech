@@ -7,8 +7,10 @@ import { listsRouters } from './routes/lists-routes.js';
 import { commentsRouter } from './routes/comments_routes.js';
 import { adminRouter } from './routes/admin-routes.js';
 import { userRouter } from './routes/user-routes.js';
+import { errorHandler } from './middlewares/errorHandler.js'
 
 dotenv.config();
+
 
 const app = express();
 app.use(express.json());
@@ -29,6 +31,7 @@ app.use('/api/lists', listsRouters);
 app.use('/api/comments', commentsRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/users', userRouter);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);

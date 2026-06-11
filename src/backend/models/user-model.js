@@ -65,8 +65,21 @@ export async function updatePassword(userId, hashedPassword) {
 }
 
 export async function deleteUser(userId) {
+  const [userRows] = await db.execute(
+    'SELECT email FROM users WHERE id = ? AND deleted_at IS NULL',
+    [userId]
+  );
+  if (userRows.length === 0) return false;
+
+  await db.execute('DELETE FROM login_attempts WHERE email = ?', [userRows[0].email]);
+
   const [result] = await db.execute(
-    'UPDATE users SET deleted_at = NOW() WHERE id = ? AND deleted_at IS NULL',
+    `UPDATE users SET
+      deleted_at = NOW(),
+      email = CONCAT('deleted_', id, '@deleted.local'),
+      username = CONCAT('utilisateur_supprime_', id),
+      password = 'DELETED'
+     WHERE id = ? AND deleted_at IS NULL`,
     [userId]
   );
   return result.affectedRows > 0;

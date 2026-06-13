@@ -15,7 +15,7 @@ booksRouter.get('/work/:id', async (req, res) => {
   const response = await fetch(`https://openlibrary.org/works/${req.params.id}.json`);
 
   if (!response.ok) {
-    res.status(response.status).json({ message: 'Livre introuvable' });
+    res.status(response.status).json({ message: "Le livre n'est pas dans la base" });
     return;
   }
 
@@ -27,7 +27,7 @@ booksRouter.get('/trending', async (_req, res) => {
   const response = await fetch('https://openlibrary.org/trending/daily.json?limit=20');
 
   if (!response.ok) {
-    res.status(response.status).json({ message: 'Impossible de récupérer les tendances' });
+    res.status(response.status).json({ message: "Les tendances ne s'affichent pas " });
     return;
   }
 
@@ -39,7 +39,7 @@ booksRouter.get('/author/:key', async (req, res) => {
   const response = await fetch(`https://openlibrary.org/authors/${req.params.key}.json`);
 
   if (!response.ok) {
-    res.status(response.status).json({ message: 'Auteur introuvable' });
+    res.status(response.status).json({ message: "L'auteur est inconnue" });
     return;
   }
 

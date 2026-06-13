@@ -45,7 +45,7 @@ export function initNav() {
     `;
   } else {
     nav.innerHTML = `
-      <span class="nav__username">Bonjour, ${username}</span>
+      <span id="nav-username" class="nav__username"></span>
       <a href="/" class="nav__link">Rechercher</a>
       <a href="/html/lists.html" class="nav__link">Mes listes</a>
       <a href="/html/profile.html" class="nav__link">Mon profil</a>
@@ -53,6 +53,8 @@ export function initNav() {
       <button id="theme-toggle" class="nav__theme-toggle" title="Changer le thème"></button>
       <button id="logout-btn" class="nav__logout">Se déconnecter</button>
     `;
+
+    document.getElementById('nav-username').textContent = `Bonjour, ${username}`;
 
     document.getElementById('logout-btn')?.addEventListener('click', async () => {
       await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });

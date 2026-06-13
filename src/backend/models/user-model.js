@@ -90,8 +90,8 @@ export async function getRecentCommentsByUser(userId, page, limit) {
   const [rows] = await db.execute(
     `SELECT id, content, book_id, created_at FROM comments
      WHERE user_id = ? ORDER BY created_at DESC
-     LIMIT ${limit} OFFSET ${offset}`,
-    [userId]
+     LIMIT ? OFFSET ?`,
+    [userId, limit, offset]
   );
   const [countRows] = await db.execute(
     'SELECT COUNT(*) as total FROM comments WHERE user_id = ?',

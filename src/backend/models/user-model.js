@@ -87,7 +87,7 @@ export async function deleteUser(userId) {
 
 export async function getRecentCommentsByUser(userId, page, limit) {
   const offset = (page - 1) * limit;
-  const [rows] = await db.execute(
+  const [rows] = await db.query(
     `SELECT id, content, book_id, created_at FROM comments
      WHERE user_id = ? ORDER BY created_at DESC
      LIMIT ? OFFSET ?`,

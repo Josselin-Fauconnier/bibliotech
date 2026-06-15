@@ -48,6 +48,7 @@
                 <th>Pseudo</th>
                 <th>Raison</th>
                 <th>Temps restant</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="banned-temp-body"></tbody>
@@ -63,6 +64,7 @@
               <tr>
                 <th>Pseudo</th>
                 <th>Raison</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="banned-perm-body"></tbody>
@@ -106,6 +108,17 @@
       <div class="modal__actions">
         <button id="ban-cancel">Annuler</button>
         <button id="ban-confirm">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="unban-modal" class="modal hidden">
+    <div class="modal__box">
+      <h3>Débannir <span id="unban-username"></span> ?</h3>
+      <p>Cette action est immédiate.</p>
+      <div class="modal__actions">
+        <button id="unban-cancel">Annuler</button>
+        <button id="unban-confirm">Confirmer</button>
       </div>
     </div>
   </div>

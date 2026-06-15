@@ -9,8 +9,8 @@ export async function getTrendingBooks() {
   return { docs: data.works ?? [], numFound: data.works?.length ?? 0 };
 }
 
-export async function searchBooks(query) {
-  const response = await fetch(`/api/books?q=${encodeURIComponent(query)}`);
+export async function searchBooks(query, page = 1) {
+  const response = await fetch(`/api/books?q=${encodeURIComponent(query)}&page=${page}`);
 
   if (!response.ok) {
     throw new Error(`Erreur serveur : ${response.status}`);

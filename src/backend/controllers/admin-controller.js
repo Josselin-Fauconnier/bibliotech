@@ -1,5 +1,6 @@
-import { getAllUsers, getAllComments, getBannedUsers, banUser } from '../models/admin-model.js';
+import { getAllUsers, getAllComments, getBannedUsers, banUser, unbanUser } from '../models/admin-model.js';
 import { deleteCommentAdmin } from '../models/comment-model.js';
+
 
 const LIMIT = 15;
 
@@ -82,3 +83,19 @@ export async function banUserHandler(req, res) {
   res.status(204).send();
 }
 
+
+export async function unbanUserHandler(req, res) {
+  const userId = Number(req.params.id);
+  if(isNaN(userId)){
+    res.status(400).json({message: "L'id n'est pas bon"});
+    return;
+  }
+
+  const unbanned = await unbanUser(userId);
+  if(!unbanned) {
+    res.status(404).json({message: "L'utilisateur n'est pas banni"});
+    return;
+  }
+
+  res.status(204).send();
+}

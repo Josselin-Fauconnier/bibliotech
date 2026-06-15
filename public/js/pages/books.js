@@ -3,15 +3,20 @@ import { initNav } from '../utils/navBarre.js';
 
 initNav();
 
-const searchForm  = document.querySelector('#search-form');
-const searchInput = document.querySelector('#search-input');
-const booksGrid   = document.querySelector('#books-grid');
-const statusEl    = document.querySelector('#status-message');
+const searchForm      = document.querySelector('#search-form');
+const searchInput     = document.querySelector('#search-input');
+const booksGrid       = document.querySelector('#books-grid');
+const statusEl        = document.querySelector('#status-message');
+const booksPagination = document.querySelector('#books-pagination');
+
+let currentQuery = '';
+let currentPage  = 1;
 
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const query = searchInput.value.trim();
   if (query) {
+    currentPage = 1;
     loadBooks(query);
   }
 });
@@ -38,17 +43,21 @@ const params = new URLSearchParams(window.location.search);
 const preQuery = params.get('q');
 if (preQuery) {
   searchInput.value = preQuery;
-  loadBooks(preQuery);
+  loadBooks(preQuery, 1);
 } else {
   loadTrending();
 }
 
-async function loadBooks(query) {
+async function loadBooks(query, page = 1) {
+  currentQuery = query;
+  currentPage  = page;
+
   setStatus('Chargement..', false);
   booksGrid.innerHTML = '';
+  booksPagination.innerHTML = '';
 
   try {
-    const data = await searchBooks(query);
+    const data = await searchBooks(query, page);
     const docs = data.docs;
 
     if (docs.length === 0) {
@@ -56,11 +65,43 @@ async function loadBooks(query) {
       return;
     }
 
-    setStatus(`${docs.length} résultats affichés sur ${data.numFound} trouvés`, false);
+    const totalPages = Math.ceil(data.numFound / 20);
+    setStatus(`${data.numFound} résultats trouvés — page ${page} / ${totalPages}`, false);
     renderBooks(docs);
+    renderPagination(page, totalPages);
   } catch {
     setStatus('Il y a eu une erreur ', true);
   }
+}
+
+function renderPagination(page, totalPages) {
+  if (totalPages <= 1) return;
+
+  const prev = document.createElement('button');
+  prev.className = 'pagination__btn';
+  prev.textContent = '← Précédent';
+  prev.disabled = page === 1;
+  prev.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    loadBooks(currentQuery, currentPage - 1);
+  });
+
+  const info = document.createElement('span');
+  info.className = 'pagination__info';
+  info.textContent = `Page ${page} / ${totalPages}`;
+
+  const next = document.createElement('button');
+  next.className = 'pagination__btn';
+  next.textContent = 'Suivant →';
+  next.disabled = page === totalPages;
+  next.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    loadBooks(currentQuery, currentPage + 1);
+  });
+
+  booksPagination.appendChild(prev);
+  booksPagination.appendChild(info);
+  booksPagination.appendChild(next);
 }
 
 function renderBooks(docs) {

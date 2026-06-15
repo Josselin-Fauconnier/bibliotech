@@ -71,3 +71,11 @@ export async function banUser(userId, reason, bannedUntil) {
   );
   return result.affectedRows > 0;
 }
+
+export async function unbanUser(userId) {
+  const [result] = await db.execute(
+    'UPDATE users SET banned_at = NULL, banned_until = NULL, ban_reason = NULL WHERE id = ? AND deleted_at IS NULL',
+    [userId]
+  );
+  return result.affectedRows > 0;
+}

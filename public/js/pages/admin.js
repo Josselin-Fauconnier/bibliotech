@@ -33,9 +33,33 @@ const banModal    = document.getElementById('ban-modal');
 const banReason   = document.getElementById('ban-reason');
 const banDuration = document.getElementById('ban-duration');
 
+let pendingUnbanUserId = null;
+const unbanModal    = document.getElementById('unban-modal');
+const unbanUsername = document.getElementById('unban-username');
+
 document.getElementById('ban-cancel').addEventListener('click', () => {
   banModal.classList.add('hidden');
   pendingBanUserId = null;
+});
+
+document.getElementById('unban-cancel').addEventListener('click', () => {
+  unbanModal.classList.add('hidden');
+  pendingUnbanUserId = null;
+});
+
+document.getElementById('unban-confirm').addEventListener('click', async () => {
+  const res = await fetch(`/api/admin/users/${pendingUnbanUserId}/ban`, {
+    method: 'DELETE',
+    credentials: 'include',
+  });
+  if (res.ok) {
+    unbanModal.classList.add('hidden');
+    loadBannedTemp();
+    loadBannedPerm();
+    loadUsers();
+  } else {
+    alert('Erreur lors du débannissement.');
+  }
 });
 
 document.getElementById('ban-confirm').addEventListener('click', async () => {
@@ -220,6 +244,20 @@ async function loadBannedTemp() {
       <td>${user.ban_reason ?? '—'}</td>
       <td>${timeRemaining(user.banned_until)}</td>
     `;
+
+    const unbanBtn = document.createElement('button');
+    unbanBtn.className = 'admin-delete-btn';
+    unbanBtn.textContent = 'Débannir';
+    unbanBtn.addEventListener('click', () => {
+      pendingUnbanUserId = user.id;
+      unbanUsername.textContent = user.username;
+      unbanModal.classList.remove('hidden');
+    });
+
+    const actionTd = document.createElement('td');
+    actionTd.appendChild(unbanBtn);
+    tr.appendChild(actionTd);
+
     bannedTempBody.appendChild(tr);
   }
 
@@ -256,6 +294,20 @@ async function loadBannedPerm() {
       <td>${user.username}</td>
       <td>${user.ban_reason ?? '—'}</td>
     `;
+
+    const unbanBtn = document.createElement('button');
+    unbanBtn.className = 'admin-delete-btn';
+    unbanBtn.textContent = 'Débannir';
+    unbanBtn.addEventListener('click', () => {
+      pendingUnbanUserId = user.id;
+      unbanUsername.textContent = user.username;
+      unbanModal.classList.remove('hidden');
+    });
+
+    const actionTd = document.createElement('td');
+    actionTd.appendChild(unbanBtn);
+    tr.appendChild(actionTd);
+
     bannedPermBody.appendChild(tr);
   }
 

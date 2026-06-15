@@ -1,6 +1,7 @@
-import { initNav } from '../utils/navBarre.js';
+import { initNav, initFooter } from '../utils/navBarre.js';
 
 initNav();
+initFooter();
 
 if (!localStorage.getItem('username')) {
   window.location.href = '/html/login.html';

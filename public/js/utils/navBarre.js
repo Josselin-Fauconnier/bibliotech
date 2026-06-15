@@ -29,6 +29,19 @@ function updateToggleIcon(theme) {
   btn.title = isDark ? 'Passer en mode clair' : 'Passer en mode sombre';
 }
 
+export function initFooter() {
+  const footer = document.getElementById('main-footer');
+  if (!footer) return;
+
+  footer.innerHTML = `
+    <p class="footer__text">
+      BiblioTech — Données fournies par
+      <a href="https://openlibrary.org" class="footer__link" target="_blank" rel="noopener">Open Library</a>
+    </p>
+    <p class="footer__text">Le site est un projet perso pour le passage du titre RNCP de développement web</p>
+  `;
+}
+
 export function initNav() {
   const nav = document.getElementById('main-nav');
   if (!nav) return;

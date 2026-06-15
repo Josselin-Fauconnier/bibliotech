@@ -1,6 +1,7 @@
-import { initNav } from '../utils/navBarre.js';
+import { initNav, initFooter } from '../utils/navBarre.js';
 
 initNav();
+initFooter();
 
 if (localStorage.getItem('role') !== 'admin') {
   window.location.href = '/html/books.html';

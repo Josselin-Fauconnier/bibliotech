@@ -1,7 +1,8 @@
-import { initNav } from '../utils/navBarre.js';
+import { initNav, initFooter } from '../utils/navBarre.js';
 import { getWorkDetails } from '../api/backend.js';
 
 initNav();
+initFooter();
 
 const params = new URLSearchParams(window.location.search);
 const listId = params.get('id');

@@ -30,5 +30,5 @@ export async function getAuthorName(key) {
   const res = await fetch(`/api/books/author/${id}`);
   if (!res.ok) return 'Auteur introuvable';
   const data = await res.json();
-  return data.name ?? 'Nom non renseigné';
+  return data.name ?? "Le nom n'est pas renseigné";
 }

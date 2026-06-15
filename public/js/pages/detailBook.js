@@ -1,7 +1,8 @@
-import { initNav } from '../utils/navBarre.js';
+import { initNav, initFooter } from '../utils/navBarre.js';
 import { getWorkDetails, getAuthorName } from '../api/backend.js';
 
 initNav();
+initFooter();
 
 const param  = new URLSearchParams(window.location.search);
 const bookId = param.get('id');

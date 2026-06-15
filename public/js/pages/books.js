@@ -1,7 +1,8 @@
 import { searchBooks, getTrendingBooks } from '../api/backend.js';
-import { initNav } from '../utils/navBarre.js';
+import { initNav, initFooter } from '../utils/navBarre.js';
 
 initNav();
+initFooter();
 
 const searchForm      = document.querySelector('#search-form');
 const searchInput     = document.querySelector('#search-input');

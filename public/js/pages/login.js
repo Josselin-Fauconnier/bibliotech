@@ -1,6 +1,7 @@
-import { initNav } from '../utils/navBarre.js';
+import { initNav, initFooter } from '../utils/navBarre.js';
 
 initNav();
+initFooter();
 
 const form = document.getElementById('login-form');
 const errorEl = document.getElementById('auth-error');

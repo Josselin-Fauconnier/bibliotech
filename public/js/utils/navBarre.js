@@ -25,8 +25,10 @@ function updateToggleIcon(theme) {
   if (!btn) return;
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const isDark = theme === 'dark' || (theme === 'auto' && systemDark);
+  const label = isDark ? 'Passer en mode clair' : 'Passer en mode sombre';
   btn.textContent = isDark ? '☀️' : '🌙';
-  btn.title = isDark ? 'Passer en mode clair' : 'Passer en mode sombre';
+  btn.title = label;
+  btn.setAttribute('aria-label', label);
 }
 
 export function initFooter() {
@@ -36,7 +38,7 @@ export function initFooter() {
   footer.innerHTML = `
     <p class="footer__text">
       BiblioTech — Données fournies par
-      <a href="https://openlibrary.org" class="footer__link" target="_blank" rel="noopener">Open Library</a>
+      <a href="https://openlibrary.org" class="footer__link" target="_blank" rel="noopener" aria-label="Open Library (ouvre dans un nouvel onglet)">Open Library</a>
     </p>
     <p class="footer__text">Le site est un projet perso pour le passage du titre RNCP de développement web</p>
   `;
@@ -79,4 +81,11 @@ export function initNav() {
 
   updateToggleIcon(getTheme());
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+
+  const currentPath = window.location.pathname;
+  nav.querySelectorAll('a.nav__link').forEach(link => {
+    if (new URL(link.href).pathname === currentPath) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
 }

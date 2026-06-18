@@ -55,7 +55,7 @@ async function createBookCard(bookId) {
   try {
     const work = await getWorkDetails(bookId);
 
-    const card = document.createElement('article');
+    const card = document.createElement('li');
     card.className = 'book-card';
 
     const link = document.createElement('a');
@@ -89,12 +89,19 @@ async function createBookCard(bookId) {
     const removeBtn = document.createElement('button');
     removeBtn.className = 'book-card__remove';
     removeBtn.textContent = 'Retirer';
+    removeBtn.setAttribute('aria-label', `Retirer "${work.title}" de la liste`);
     removeBtn.addEventListener('click', async () => {
+      const nextFocus = card.nextElementSibling?.querySelector('a, button')
+        ?? card.previousElementSibling?.querySelector('a, button')
+        ?? document.getElementById('list-title');
       const res = await fetch(`/api/lists/${listId}/books/${bookId}`, {
         method: 'DELETE',
         credentials: 'include',
       });
-      if (res.ok) card.remove();
+      if (res.ok) {
+        card.remove();
+        nextFocus?.focus();
+      }
     });
 
     card.appendChild(link);

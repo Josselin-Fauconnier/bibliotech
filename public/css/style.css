@@ -98,6 +98,25 @@ img {
 /* =============================================
    ACCESSIBILITÉ
    ============================================= */
+.skip-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  clip-path: inset(100%);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 8px 16px;
+  z-index: 9999;
+  transition: clip-path 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.skip-links:focus-visible {
+  clip-path: inset(0);
+  transform: translateX(-50%) translateY(0);
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -108,9 +127,9 @@ img {
 }
 
 :focus-visible {
-  outline: 5px solid var (--color-accent);
-  outline-offset: 1 px;
-  border-radius: var(--radius-sm)
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* =============================================

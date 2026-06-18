@@ -11,12 +11,14 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-links">Aller au contenu principal</a>
+
   <header class="header">
     <a href="/" class="site-name">BiblioTech</a>
   </header>
   <nav id="main-nav" class="nav"></nav>
 
-  <main class="main">
+  <main id="main-content" class="main">
 
     <section class="hero">
       <h1 class="hero__title">Votre bibliothèque en ligne</h1>
@@ -38,7 +40,7 @@
     <section class="trending">
       <h2 class="section-title">Livres du moment</h2>
       <p id="status-message" class="status" aria-live="polite"></p>
-      <div id="books-grid" class="books-grid" role="list"></div>
+      <ul id="books-grid" class="books-grid"></ul>
     </section>
 
   </main>

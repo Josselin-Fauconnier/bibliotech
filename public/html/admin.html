@@ -10,12 +10,14 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-links">Aller au contenu principal</a>
+
   <header class="header">
     <a href="/" class="site-name">BiblioTech</a>
   </header>
   <nav id="main-nav" class="nav"></nav>
 
-  <main class="main">
+  <main id="main-content" class="main">
     <h1 class="page-title">Dashboard Admin</h1>
 
     <div class="admin-grid">
@@ -96,9 +98,9 @@
 
   </main>
 
-  <div id="ban-modal" class="modal hidden">
+  <div id="ban-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="ban-modal-title">
     <div class="modal__box">
-      <h3>Bannir l'utilisateur</h3>
+      <h3 id="ban-modal-title">Bannir l'utilisateur</h3>
       <label>Raison
         <input id="ban-reason" type="text" placeholder="spam, abus...">
       </label>
@@ -112,9 +114,9 @@
     </div>
   </div>
 
-  <div id="unban-modal" class="modal hidden">
+  <div id="unban-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="unban-modal-title">
     <div class="modal__box">
-      <h3>Débannir <span id="unban-username"></span> ?</h3>
+      <h3 id="unban-modal-title">Débannir <span id="unban-username"></span> ?</h3>
       <p>Cette action est immédiate.</p>
       <div class="modal__actions">
         <button id="unban-cancel">Annuler</button>

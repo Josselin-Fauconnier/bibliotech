@@ -38,13 +38,42 @@ let pendingUnbanUserId = null;
 const unbanModal    = document.getElementById('unban-modal');
 const unbanUsername = document.getElementById('unban-username');
 
+function getFocusable(container) {
+  return Array.from(container.querySelectorAll(
+    'button:not([disabled]), input:not([disabled]), [href]'
+  ));
+}
+
+function openModal(modal, trigger) {
+  modal._trigger = trigger;
+  modal.classList.remove('hidden');
+  getFocusable(modal)[0]?.focus();
+  modal._trapFn = (e) => {
+    if (e.key === 'Escape') { closeModal(modal); return; }
+    if (e.key !== 'Tab') return;
+    const els = getFocusable(modal);
+    if (e.shiftKey && document.activeElement === els[0]) {
+      e.preventDefault(); els[els.length - 1].focus();
+    } else if (!e.shiftKey && document.activeElement === els[els.length - 1]) {
+      e.preventDefault(); els[0].focus();
+    }
+  };
+  modal.addEventListener('keydown', modal._trapFn);
+}
+
+function closeModal(modal) {
+  modal.classList.add('hidden');
+  modal.removeEventListener('keydown', modal._trapFn);
+  modal._trigger?.focus();
+}
+
 document.getElementById('ban-cancel').addEventListener('click', () => {
-  banModal.classList.add('hidden');
+  closeModal(banModal);
   pendingBanUserId = null;
 });
 
 document.getElementById('unban-cancel').addEventListener('click', () => {
-  unbanModal.classList.add('hidden');
+  closeModal(unbanModal);
   pendingUnbanUserId = null;
 });
 
@@ -54,7 +83,7 @@ document.getElementById('unban-confirm').addEventListener('click', async () => {
     credentials: 'include',
   });
   if (res.ok) {
-    unbanModal.classList.add('hidden');
+    closeModal(unbanModal);
     loadBannedTemp();
     loadBannedPerm();
     loadUsers();
@@ -74,7 +103,7 @@ document.getElementById('ban-confirm').addEventListener('click', async () => {
     }),
   });
   if (res.ok) {
-    banModal.classList.add('hidden');
+    closeModal(banModal);
     loadUsers();
     loadBannedTemp();
     loadBannedPerm();
@@ -144,11 +173,12 @@ async function loadUsers() {
     const banBtn = document.createElement('button');
     banBtn.className = 'admin-delete-btn';
     banBtn.textContent = 'Bannir';
+    banBtn.setAttribute('aria-label', `Bannir ${user.username}`);
     banBtn.addEventListener('click', () => {
       pendingBanUserId = user.id;
       banReason.value = '';
       banDuration.value = '';
-      banModal.classList.remove('hidden');
+      openModal(banModal, banBtn);
     });
 
     const actionTd = document.createElement('td');
@@ -189,6 +219,7 @@ async function loadComments() {
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'admin-delete-btn';
     deleteBtn.textContent = 'Supprimer';
+    deleteBtn.setAttribute('aria-label', `Supprimer le commentaire de ${comment.username}`);
     deleteBtn.addEventListener('click', async () => {
       const res = await fetch(`/api/admin/comments/${comment.id}`, {
         method: 'DELETE',
@@ -249,10 +280,11 @@ async function loadBannedTemp() {
     const unbanBtn = document.createElement('button');
     unbanBtn.className = 'admin-delete-btn';
     unbanBtn.textContent = 'Débannir';
+    unbanBtn.setAttribute('aria-label', `Débannir ${user.username}`);
     unbanBtn.addEventListener('click', () => {
       pendingUnbanUserId = user.id;
       unbanUsername.textContent = user.username;
-      unbanModal.classList.remove('hidden');
+      openModal(unbanModal, unbanBtn);
     });
 
     const actionTd = document.createElement('td');
@@ -299,10 +331,11 @@ async function loadBannedPerm() {
     const unbanBtn = document.createElement('button');
     unbanBtn.className = 'admin-delete-btn';
     unbanBtn.textContent = 'Débannir';
+    unbanBtn.setAttribute('aria-label', `Débannir ${user.username}`);
     unbanBtn.addEventListener('click', () => {
       pendingUnbanUserId = user.id;
       unbanUsername.textContent = user.username;
-      unbanModal.classList.remove('hidden');
+      openModal(unbanModal, unbanBtn);
     });
 
     const actionTd = document.createElement('td');

@@ -38,7 +38,7 @@ function createBookCard(book) {
   const year   = book.first_publish_year ?? null;
   const workId = book.key.replace('/works/', '');
 
-  const card = document.createElement('article');
+  const card = document.createElement('li');
   card.className = 'book-card';
 
   const link = document.createElement('a');

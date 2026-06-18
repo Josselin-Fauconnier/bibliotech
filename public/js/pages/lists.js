@@ -37,7 +37,7 @@ async function loadLists() {
   }
 
   for (const list of lists) {
-    const card = document.createElement('div');
+    const card = document.createElement('li');
     card.className = 'list-card';
     card.innerHTML = `
       <a class="list-card__link" href="/html/listDetail.html?id=${list.id}">
@@ -83,6 +83,7 @@ form.addEventListener('submit', async (e) => {
   nameInput.value = '';
   submitBtn.disabled = false;
   await loadLists();
+  container.querySelector('.list-card__link')?.focus();
 });
 
 container.addEventListener('click', async (e) => {
@@ -92,13 +93,19 @@ container.addEventListener('click', async (e) => {
   const id = btn.dataset.id;
   if (!id) return;
 
+  const card = btn.closest('.list-card');
+  const nextFocus = card?.nextElementSibling?.querySelector('.list-card__link, .list-card__delete')
+    ?? card?.previousElementSibling?.querySelector('.list-card__link, .list-card__delete')
+    ?? document.getElementById('list-name');
+
   const res = await fetch(`/api/lists/${id}`, {
     method: 'DELETE',
     credentials: 'include',
   });
 
   if (res.ok) {
-    btn.closest('.list-card')?.remove();
+    card?.remove();
+    nextFocus?.focus();
   } else {
     errorEl.textContent = 'il est imposible de suprimer la liste ';
   }

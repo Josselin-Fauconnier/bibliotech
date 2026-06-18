@@ -115,6 +115,7 @@ async function loadComments() {
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'btn comment-item__delete';
       deleteBtn.textContent = 'Supprimer';
+      deleteBtn.setAttribute('aria-label', `Supprimer le commentaire de ${comment.username}`);
       deleteBtn.addEventListener('click', async () => {
         const res = await fetch(`/api/comments/${comment.id}`, {
           method: 'DELETE',
@@ -126,6 +127,7 @@ async function loadComments() {
       const editBtn = document.createElement('button');
       editBtn.className = 'btn comment-item__edit';
       editBtn.textContent = 'Éditer';
+      editBtn.setAttribute('aria-label', `Éditer le commentaire de ${comment.username}`);
       editBtn.addEventListener('click', () => {
         const textarea = document.createElement('textarea');
         textarea.className = 'comment-form__input';
@@ -151,6 +153,7 @@ async function loadComments() {
 
         li.appendChild(textarea);
         li.appendChild(saveBtn);
+        textarea.focus();
       });
 
       const actions = document.createElement('div');

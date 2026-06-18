@@ -50,6 +50,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
+  list-style: none;
 }
 
 /* =============================================

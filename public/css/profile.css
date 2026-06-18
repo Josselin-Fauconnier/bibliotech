@@ -126,12 +126,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .comment-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-left-color: var(--color-nav);
+  box-shadow: 0 4px 16px rgba(107, 70, 193, 0.25);
 }
 
 .comment-item__content {

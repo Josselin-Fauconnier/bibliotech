@@ -40,6 +40,22 @@ export async function getBooksInList(listId) {
   return rows;
 }
 
+export async function countBooksInList(listId) {
+  const [rows] = await db.execute(
+    'SELECT COUNT(*) as total FROM list_books WHERE list_id = ?',
+    [listId]
+  );
+  return rows[0].total;
+}
+
+export async function isBookInList(listId, bookId) {
+  const [rows] = await db.execute(
+    'SELECT 1 FROM list_books WHERE list_id = ? AND book_id = ? LIMIT 1',
+    [listId, bookId]
+  );
+  return rows.length > 0;
+}
+
 export async function addBooksToList(listId, bookId) {
   await db.execute(
     'INSERT INTO list_books (list_id, book_id) VALUES (?, ?)',

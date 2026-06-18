@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { CreateListSchema } from '../../shared/schemas/list-schema.js';
-import { getListsByUser, createList, deleteList, getBooksInList, addBooksToList, removeBookFromList } from '../models/list-model.js';
+import { getListsByUser, createList, deleteList, getBooksInList, addBooksToList, removeBookFromList, countBooksInList, isBookInList } from '../models/list-model.js';
+
+const maxBooks = 10;
 
 export async function getLists(req, res) {
   const lists = await getListsByUser(req.user.userId);
@@ -48,6 +50,18 @@ export async function addBook(req, res) {
 
   if (!bookId) {
     res.status(400).json({ message: 'Les données sont invalides' });
+    return;
+  }
+
+  const alreadyInList = await isBookInList(listId, bookId);
+  if (alreadyInList) {
+    res.status(409).json({ message: 'Ce livre est déjà dans la liste' });
+    return;
+  }
+
+  const total = await countBooksInList(listId);
+  if (total >= MAX_BOOKS_PER_LIST) {
+    res.status(409).json({ message: `Une liste ne peut pas contenir plus de ${maxBooks} livres` });
     return;
   }
 

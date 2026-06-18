@@ -19,25 +19,21 @@
   --space-lg: 1.5rem;
   --space-xl: 2rem;
 
-  --font-size-sm:   0.875rem;
+  --font-size-sm:   0.75rem;
   --font-size-base: 1rem;
-  --font-size-lg:   1.125rem;
+  --font-size-lg:   1.5rem;
   --font-size-xl:   clamp(1.25rem, 3vw, 1.75rem);
 
   --radius:        10px;
   --radius-sm:     5px;
-  --shadow:        0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow:        0 5px 10px rgba(0, 0, 0, 0.08);
   --shadow-hover:  0 6px 20px rgba(0, 0, 0, 0.14);
   --transition:    200ms ease;
   --header-height: 60px;
   --max-width:     1400px;
 }
 
-/* =============================================
-   MODE SOMBRE
-   - Automatique si l'OS est en dark (sauf si l'user a forcé "light")
-   - Forcé si data-theme="dark" sur <html>
-   ============================================= */
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --color-primary:       #4a7fcb;
@@ -70,9 +66,7 @@
   --shadow-hover:        0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* =============================================
-   RESET
-   ============================================= */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -95,9 +89,6 @@ img {
   max-width: 100%;
 }
 
-/* =============================================
-   ACCESSIBILITÉ
-   ============================================= */
 .skip-links {
   position: absolute;
   left: 50%;
@@ -132,9 +123,7 @@ img {
   border-radius: var(--radius-sm);
 }
 
-/* =============================================
-   HEADER
-   ============================================= */
+
 .header {
   height: var(--header-height);
   background: var(--color-primary);
@@ -151,9 +140,7 @@ img {
   text-decoration: none;
 }
 
-/* =============================================
-   NAVIGATION
-   ============================================= */
+
 .nav {
   position: sticky;
   top: 0;
@@ -240,9 +227,7 @@ img {
   opacity: 0.75;
 }
 
-/* =============================================
-   LAYOUT
-   ============================================= */
+
 .page-title {
   font-size: var(--font-size-xl);
   font-weight: 700;
@@ -290,9 +275,7 @@ img {
   }
 }
 
-/* =============================================
-   STATUS & ERREURS
-   ============================================= */
+
 .status {
   min-height: 1.5rem;
   margin-bottom: var(--space-md);
@@ -311,9 +294,7 @@ img {
   text-align: center;
 }
 
-/* =============================================
-   LIEN RETOUR
-   ============================================= */
+
 .back-link {
   display: inline-block;
   margin-bottom: var(--space-md);
@@ -328,9 +309,7 @@ img {
   opacity: 0.75;
 }
 
-/* =============================================
-   BOUTON UTILITAIRE
-   ============================================= */
+
 .btn {
   padding: 0.75rem var(--space-xl);
   font-size: var(--font-size-base);
@@ -346,6 +325,48 @@ img {
 
 .btn:hover {
   opacity: 0.75;
+}
+
+/* =============================================
+   PAGINATION
+   ============================================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.pagination__btn {
+  padding: 0.5rem var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+  min-height: 44px;
+}
+
+.pagination__btn:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.pagination__btn:disabled {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination__info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 /* =============================================

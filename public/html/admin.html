@@ -25,17 +25,19 @@
       <section class="admin-section">
         <h2 class="admin-section__title">Utilisateurs</h2>
         <p id="users-status" class="status" aria-live="polite"></p>
-        <table id="users-table" class="admin-table">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Rôle</th>
-              <th>Inscription</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="users-body"></tbody>
-        </table>
+        <div class="admin-table-wrapper">
+          <table id="users-table" class="admin-table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Rôle</th>
+                <th>Inscription</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="users-body"></tbody>
+          </table>
+        </div>
         <div id="users-pagination" class="pagination"></div>
       </section>
 
@@ -44,33 +46,37 @@
         <section class="admin-section">
           <h2 class="admin-section__title">Bannis temporairement</h2>
           <p id="banned-temp-status" class="status" aria-live="polite"></p>
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Pseudo</th>
-                <th>Raison</th>
-                <th>Temps restant</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="banned-temp-body"></tbody>
-          </table>
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Pseudo</th>
+                  <th>Raison</th>
+                  <th>Temps restant</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="banned-temp-body"></tbody>
+            </table>
+          </div>
           <div id="banned-temp-pagination" class="pagination"></div>
         </section>
 
         <section class="admin-section">
           <h2 class="admin-section__title">Bannis définitivement</h2>
           <p id="banned-perm-status" class="status" aria-live="polite"></p>
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Pseudo</th>
-                <th>Raison</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="banned-perm-body"></tbody>
-          </table>
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Pseudo</th>
+                  <th>Raison</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="banned-perm-body"></tbody>
+            </table>
+          </div>
           <div id="banned-perm-pagination" class="pagination"></div>
         </section>
 
@@ -79,18 +85,20 @@
       <section class="admin-section">
         <h2 class="admin-section__title">Commentaires</h2>
         <p id="comments-status" class="status" aria-live="polite"></p>
-        <table id="comments-table" class="admin-table">
-          <thead>
-            <tr>
-              <th>Utilisateur</th>
-              <th>Livre</th>
-              <th>Commentaire</th>
-              <th>Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="comments-body"></tbody>
-        </table>
+        <div class="admin-table-wrapper">
+          <table id="comments-table" class="admin-table">
+            <thead>
+              <tr>
+                <th>Utilisateur</th>
+                <th>Livre</th>
+                <th>Commentaire</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="comments-body"></tbody>
+          </table>
+        </div>
         <div id="comments-pagination" class="pagination"></div>
       </section>
 

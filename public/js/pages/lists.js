@@ -12,7 +12,7 @@ const container = document.getElementById('lists-container');
 const errorEl   = document.getElementById('list-error');
 
 if (!(form instanceof HTMLFormElement)) throw new Error("le formulaire n'existe pas ");
-if (!(container instanceof HTMLDivElement)) throw new Error('le contenueur est introuvable ');
+if (!(container instanceof HTMLUListElement)) throw new Error('le contenueur est introuvable ');
 if (!(errorEl instanceof HTMLParagraphElement)) throw new Error("l'erreur n'est pas identifiable ");
 
 const submitBtn = form.querySelector('button[type="submit"]');

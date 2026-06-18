@@ -214,6 +214,7 @@ async function loadComments() {
     const tr = document.createElement('tr');
 
     const td = document.createElement('td');
+    td.className = 'admin-table__comment';
     td.textContent = comment.content;
 
     const deleteBtn = document.createElement('button');

@@ -23,6 +23,11 @@
 /* =============================================
    ADMIN — TABLEAU
    ============================================= */
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .admin-table {
   width: 100%;
   border-collapse: collapse;
@@ -46,6 +51,13 @@
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text);
   vertical-align: middle;
+}
+
+.admin-table__comment {
+  max-width: 28ch;
+  max-height: 4.5em;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
 }
 
 .admin-table tr:last-child td {

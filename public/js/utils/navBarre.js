@@ -1,3 +1,5 @@
+import { startSessionTimer } from './apiFetch.js';
+
 function getTheme() {
   return localStorage.getItem('theme') || 'auto';
 }
@@ -75,6 +77,7 @@ export function initNav() {
 
   if (username) {
     document.getElementById('nav-username').textContent = `Bonjour, ${username}`;
+    startSessionTimer();
 
     document.getElementById('logout-btn')?.addEventListener('click', async () => {
       await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });

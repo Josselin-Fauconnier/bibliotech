@@ -66,14 +66,14 @@ export async function login(req, res) {
   const token = jwt.sign(
     { userId: user.id, role: user.role },
     process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN ?? '12h' }
+    { expiresIn: process.env.JWT_EXPIRES_IN ?? '30m' }
   );
 
   res.cookie('token', token, {
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
-    maxAge: 1000 * 60 * 60 * 12,
+    maxAge: 1000 * 60 * 30,
   });
 
   res.json({ role: user.role, username: user.username });

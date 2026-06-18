@@ -1,4 +1,5 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
+import { apiFetch } from '../utils/apiFetch.js';
 
 initNav();
 initFooter();
@@ -78,9 +79,8 @@ document.getElementById('unban-cancel').addEventListener('click', () => {
 });
 
 document.getElementById('unban-confirm').addEventListener('click', async () => {
-  const res = await fetch(`/api/admin/users/${pendingUnbanUserId}/ban`, {
+  const res = await apiFetch(`/api/admin/users/${pendingUnbanUserId}/ban`, {
     method: 'DELETE',
-    credentials: 'include',
   });
   if (res.ok) {
     closeModal(unbanModal);
@@ -93,9 +93,8 @@ document.getElementById('unban-confirm').addEventListener('click', async () => {
 });
 
 document.getElementById('ban-confirm').addEventListener('click', async () => {
-  const res = await fetch(`/api/admin/users/${pendingBanUserId}/ban`, {
+  const res = await apiFetch(`/api/admin/users/${pendingBanUserId}/ban`, {
     method: 'PATCH',
-    credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       reason: banReason.value || null,
@@ -150,9 +149,7 @@ async function loadUsers() {
   usersStatus.textContent = 'Chargement...';
   usersBody.innerHTML = '';
 
-  const res = await fetch(`/api/admin/users?page=${usersPage}`, {
-    credentials: 'include',
-  });
+  const res = await apiFetch(`/api/admin/users?page=${usersPage}`);
 
   if (!res.ok) {
     usersStatus.textContent = 'Impossible de charger les utilisateurs.';
@@ -198,9 +195,7 @@ async function loadComments() {
   commentsStatus.textContent = 'Chargement...';
   commentsBody.innerHTML = '';
 
-  const res = await fetch(`/api/admin/comments?page=${commentsPage}`, {
-    credentials: 'include',
-  });
+  const res = await apiFetch(`/api/admin/comments?page=${commentsPage}`);
 
   if (!res.ok) {
     commentsStatus.textContent = 'il est imposible de charger les commentaires';
@@ -222,9 +217,8 @@ async function loadComments() {
     deleteBtn.textContent = 'Supprimer';
     deleteBtn.setAttribute('aria-label', `Supprimer le commentaire de ${comment.username}`);
     deleteBtn.addEventListener('click', async () => {
-      const res = await fetch(`/api/admin/comments/${comment.id}`, {
+      const res = await apiFetch(`/api/admin/comments/${comment.id}`, {
         method: 'DELETE',
-        credentials: 'include',
       });
       if (res.ok) tr.remove();
     });
@@ -253,9 +247,7 @@ async function loadBannedTemp() {
   bannedTempStatus.textContent = 'Chargement...';
   bannedTempBody.innerHTML = '';
 
-  const res = await fetch(`/api/admin/banned-users?type=temp&page=${bannedTempPage}`, {
-    credentials: 'include',
-  });
+  const res = await apiFetch(`/api/admin/banned-users?type=temp&page=${bannedTempPage}`);
 
   if (!res.ok) {
     bannedTempStatus.textContent = 'Impossible de charger.';
@@ -305,9 +297,7 @@ async function loadBannedPerm() {
   bannedPermStatus.textContent = 'Chargement...';
   bannedPermBody.innerHTML = '';
 
-  const res = await fetch(`/api/admin/banned-users?type=permanent&page=${bannedPermPage}`, {
-    credentials: 'include',
-  });
+  const res = await apiFetch(`/api/admin/banned-users?type=permanent&page=${bannedPermPage}`);
 
   if (!res.ok) {
     bannedPermStatus.textContent = 'Impossible de charger.';

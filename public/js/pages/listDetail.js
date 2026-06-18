@@ -1,5 +1,6 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
 import { getWorkDetails } from '../api/backend.js';
+import { apiFetch } from '../utils/apiFetch.js';
 
 initNav();
 initFooter();
@@ -17,7 +18,7 @@ const listStatus = document.getElementById('list-status');
 const booksGrid  = document.getElementById('books-grid');
 
 async function loadListName() {
-  const res = await fetch('/api/lists', { credentials: 'include' });
+  const res = await apiFetch('/api/lists');
   if (!res.ok) return;
   const lists = await res.json();
   const list = lists.find(l => String(l.id) === listId);
@@ -27,9 +28,7 @@ async function loadListName() {
 async function loadListBooks() {
   listStatus.textContent = 'Chargement...';
 
-  const res = await fetch(`/api/lists/${listId}/books`, {
-    credentials: 'include',
-  });
+  const res = await apiFetch(`/api/lists/${listId}/books`);
 
   if (!res.ok) {
     listStatus.textContent = 'liste inchargeable ';
@@ -39,7 +38,7 @@ async function loadListBooks() {
   const books = await res.json();
 
   if (books.length === 0) {
-    listStatus.textContent = 'liste vide ';
+    listStatus.textContent = "la liste est vide";
     return;
   }
 
@@ -94,9 +93,8 @@ async function createBookCard(bookId) {
       const nextFocus = card.nextElementSibling?.querySelector('a, button')
         ?? card.previousElementSibling?.querySelector('a, button')
         ?? document.getElementById('list-title');
-      const res = await fetch(`/api/lists/${listId}/books/${bookId}`, {
+      const res = await apiFetch(`/api/lists/${listId}/books/${bookId}`, {
         method: 'DELETE',
-        credentials: 'include',
       });
       if (res.ok) {
         card.remove();

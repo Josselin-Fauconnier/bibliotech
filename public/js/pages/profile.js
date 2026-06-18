@@ -1,4 +1,5 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
+import { apiFetch } from '../utils/apiFetch.js';
 
 initNav();
 initFooter();
@@ -29,9 +30,7 @@ let currentPage = 1;
 async function loadProfile() {
   profileStatus.textContent = 'Chargement...';
 
-  const res = await fetch(`/api/users/me?page=${currentPage}`, {
-    credentials: 'include',
-  });
+  const res = await apiFetch(`/api/users/me?page=${currentPage}`);
 
   if (!res.ok) {
     profileStatus.textContent = 'Impossible de charger le profil.';
@@ -117,10 +116,9 @@ passwordForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   passwordMsg.textContent = '';
 
-  const res = await fetch('/api/users/me/password', {
+  const res = await apiFetch('/api/users/me/password', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
     body: JSON.stringify({
       currentPassword: currentPwd.value,
       newPassword: newPwd.value,
@@ -139,9 +137,8 @@ passwordForm.addEventListener('submit', async (e) => {
 deleteBtn.addEventListener('click', async () => {
   if (!confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.')) return;
 
-  const res = await fetch('/api/users/me', {
+  const res = await apiFetch('/api/users/me', {
     method: 'DELETE',
-    credentials: 'include',
   });
 
   if (res.ok) {

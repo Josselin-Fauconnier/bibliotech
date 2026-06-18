@@ -1,4 +1,5 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
+import { apiFetch } from '../utils/apiFetch.js';
 
 initNav();
 initFooter();
@@ -22,7 +23,7 @@ async function loadLists() {
   container.innerHTML = '';
   errorEl.textContent = '';
 
-  const res = await fetch('/api/lists', { credentials: 'include' });
+  const res = await apiFetch('/api/lists');
 
   if (!res.ok) {
     errorEl.textContent = 'il est imposible de charger des listes ';
@@ -64,10 +65,9 @@ form.addEventListener('submit', async (e) => {
 
   const name = nameInput.value.trim();
 
-  const res = await fetch('/api/lists', {
+  const res = await apiFetch('/api/lists', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
     body: JSON.stringify({ name }),
   });
 
@@ -98,9 +98,8 @@ container.addEventListener('click', async (e) => {
     ?? card?.previousElementSibling?.querySelector('.list-card__link, .list-card__delete')
     ?? document.getElementById('list-name');
 
-  const res = await fetch(`/api/lists/${id}`, {
+  const res = await apiFetch(`/api/lists/${id}`, {
     method: 'DELETE',
-    credentials: 'include',
   });
 
   if (res.ok) {

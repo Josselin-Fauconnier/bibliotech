@@ -1,5 +1,6 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
 import { getWorkDetails, getAuthorName } from '../api/backend.js';
+import { apiFetch } from '../utils/apiFetch.js';
 
 initNav();
 initFooter();
@@ -117,9 +118,8 @@ async function loadComments() {
       deleteBtn.textContent = 'Supprimer';
       deleteBtn.setAttribute('aria-label', `Supprimer le commentaire de ${comment.username}`);
       deleteBtn.addEventListener('click', async () => {
-        const res = await fetch(`/api/comments/${comment.id}`, {
+        const res = await apiFetch(`/api/comments/${comment.id}`, {
           method: 'DELETE',
-          credentials: 'include',
         });
         if (res.ok) li.remove();
       });
@@ -137,10 +137,9 @@ async function loadComments() {
         saveBtn.className = 'btn comment-item__save';
         saveBtn.textContent = 'Enregistrer';
         saveBtn.addEventListener('click', async () => {
-          const res = await fetch(`/api/comments/${comment.id}`, {
+          const res = await apiFetch(`/api/comments/${comment.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
             body: JSON.stringify({ content: textarea.value.trim() }),
           });
           if (res.ok) {
@@ -168,7 +167,7 @@ async function loadComments() {
 }
 
 async function loadLists() {
-  const res = await fetch('/api/lists', { credentials: 'include' });
+  const res = await apiFetch('/api/lists');
 
   if (!res.ok) return;
 
@@ -194,10 +193,9 @@ addForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const listId = listSelect.value;
 
-  const res = await fetch(`/api/lists/${listId}/books`, {
+  const res = await apiFetch(`/api/lists/${listId}/books`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
     body: JSON.stringify({ bookId }),
   });
 
@@ -212,10 +210,9 @@ commentForm.addEventListener('submit', async (e) => {
 
   const content = commentInput.value.trim();
 
-  const res = await fetch(`/api/comments/${bookId}`, {
+  const res = await apiFetch(`/api/comments/${bookId}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
     body: JSON.stringify({ content }),
   });
 

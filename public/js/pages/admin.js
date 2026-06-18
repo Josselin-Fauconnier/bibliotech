@@ -161,11 +161,15 @@ async function loadUsers() {
 
   for (const user of data) {
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${user.username}</td>
-      <td>${user.role}</td>
-      <td>${new Date(user.created_at).toLocaleDateString('fr-FR')}</td>
-    `;
+
+    const tdUsername = document.createElement('td');
+    tdUsername.textContent = user.username;
+
+    const tdRole = document.createElement('td');
+    tdRole.textContent = user.role;
+
+    const tdDate = document.createElement('td');
+    tdDate.textContent = new Date(user.created_at).toLocaleDateString('fr-FR');
 
     const banBtn = document.createElement('button');
     banBtn.className = 'admin-delete-btn';
@@ -180,6 +184,10 @@ async function loadUsers() {
 
     const actionTd = document.createElement('td');
     actionTd.appendChild(banBtn);
+
+    tr.appendChild(tdUsername);
+    tr.appendChild(tdRole);
+    tr.appendChild(tdDate);
     tr.appendChild(actionTd);
 
     usersBody.appendChild(tr);
@@ -226,12 +234,23 @@ async function loadComments() {
     const actionTd = document.createElement('td');
     actionTd.appendChild(deleteBtn);
 
-    tr.innerHTML = `
-      <td>${comment.username}</td>
-      <td><a href="/html/detailBook.html?id=${comment.book_id}" class="admin-table__link">Voir le livre</a></td>
-    `;
+    const tdUsername = document.createElement('td');
+    tdUsername.textContent = comment.username;
+
+    const tdLink = document.createElement('td');
+    const bookLink = document.createElement('a');
+    bookLink.href = `/html/detailBook.html?id=${comment.book_id}`;
+    bookLink.className = 'admin-table__link';
+    bookLink.textContent = 'Voir le livre';
+    tdLink.appendChild(bookLink);
+
+    const tdDate = document.createElement('td');
+    tdDate.textContent = new Date(comment.created_at).toLocaleDateString('fr-FR');
+
+    tr.appendChild(tdUsername);
+    tr.appendChild(tdLink);
     tr.appendChild(td);
-    tr.insertAdjacentHTML('beforeend', `<td>${new Date(comment.created_at).toLocaleDateString('fr-FR')}</td>`);
+    tr.appendChild(tdDate);
     tr.appendChild(actionTd);
 
     commentsBody.appendChild(tr);
@@ -264,11 +283,15 @@ async function loadBannedTemp() {
 
   for (const user of data) {
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${user.username}</td>
-      <td>${user.ban_reason ?? '—'}</td>
-      <td>${timeRemaining(user.banned_until)}</td>
-    `;
+
+    const tdUsername = document.createElement('td');
+    tdUsername.textContent = user.username;
+
+    const tdReason = document.createElement('td');
+    tdReason.textContent = user.ban_reason ?? '—';
+
+    const tdRemaining = document.createElement('td');
+    tdRemaining.textContent = timeRemaining(user.banned_until);
 
     const unbanBtn = document.createElement('button');
     unbanBtn.className = 'admin-delete-btn';
@@ -282,6 +305,10 @@ async function loadBannedTemp() {
 
     const actionTd = document.createElement('td');
     actionTd.appendChild(unbanBtn);
+
+    tr.appendChild(tdUsername);
+    tr.appendChild(tdReason);
+    tr.appendChild(tdRemaining);
     tr.appendChild(actionTd);
 
     bannedTempBody.appendChild(tr);
@@ -314,10 +341,12 @@ async function loadBannedPerm() {
 
   for (const user of data) {
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${user.username}</td>
-      <td>${user.ban_reason ?? '—'}</td>
-    `;
+
+    const tdUsername = document.createElement('td');
+    tdUsername.textContent = user.username;
+
+    const tdReason = document.createElement('td');
+    tdReason.textContent = user.ban_reason ?? '—';
 
     const unbanBtn = document.createElement('button');
     unbanBtn.className = 'admin-delete-btn';
@@ -331,6 +360,9 @@ async function loadBannedPerm() {
 
     const actionTd = document.createElement('td');
     actionTd.appendChild(unbanBtn);
+
+    tr.appendChild(tdUsername);
+    tr.appendChild(tdReason);
     tr.appendChild(actionTd);
 
     bannedPermBody.appendChild(tr);

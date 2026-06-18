@@ -1,14 +1,25 @@
 import { z } from 'zod';
-import { CommentSchema } from '../../shared/schemas/comment-schema.js';
+import { CommentSchema, BookIdSchema } from '../../shared/schemas/comment-schema.js';
 import { getCommentsByBooks, createComment, deleteComment, updateComment, getLastTimeComment } from '../models/comment-model.js';
 
 export async function getComments(req, res) {
-  const bookId = String(req.params.bookId);
-  const comments = await getCommentsByBooks(bookId);
+  const parsedBookId = BookIdSchema.safeParse(req.params.bookId);
+  if (!parsedBookId.success) {
+    res.status(400).json({ message: "L'identifiant du livre est invalide" });
+    return;
+  }
+
+  const comments = await getCommentsByBooks(parsedBookId.data);
   res.json(comments);
 }
 
 export async function createCommentHandler(req, res) {
+  const parsedBookId = BookIdSchema.safeParse(req.params.bookId);
+  if (!parsedBookId.success) {
+    res.status(400).json({ message: "L'identifiant du livre est invalide" });
+    return;
+  }
+
   const parsed = CommentSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ errors: z.flattenError(parsed.error).fieldErrors });
@@ -32,8 +43,7 @@ export async function createCommentHandler(req, res) {
     }
   }
 
-  const bookId = String(req.params.bookId);
-  await createComment(req.user.userId, bookId, parsed.data.content);
+  await createComment(req.user.userId, parsedBookId.data, parsed.data.content);
 
   res.status(201).json({ message: 'Le commentaire a été posté' });
 }

@@ -38,11 +38,6 @@ export async function deleteListHandler(req, res) {
 
 export async function getBooks(req, res) {
   const listId = Number(req.params.id);
-  if (isNaN(listId)) {
-    res.status(400).json({ message: "l'id est invalide" });
-    return;
-  }
-
   const books = await getBooksInList(listId);
   res.json(books);
 }
@@ -51,7 +46,7 @@ export async function addBook(req, res) {
   const listId = Number(req.params.id);
   const { bookId } = req.body;
 
-  if (isNaN(listId) || !bookId) {
+  if (!bookId) {
     res.status(400).json({ message: 'Les données sont invalides' });
     return;
   }
@@ -64,7 +59,7 @@ export async function removeBook(req, res) {
   const listId = Number(req.params.id);
   const bookId = String(req.params.bookId);
 
-  if (isNaN(listId) || !bookId) {
+  if (!bookId) {
     res.status(400).json({ message: 'les données sont invalides' });
     return;
   }

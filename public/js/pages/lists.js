@@ -40,17 +40,36 @@ async function loadLists() {
   for (const list of lists) {
     const card = document.createElement('li');
     card.className = 'list-card';
-    card.innerHTML = `
-      <a class="list-card__link" href="/html/listDetail.html?id=${list.id}">
-        <div class="list-card__info">
-          <h2 class="list-card__name">${list.name}</h2>
-          ${list.description ? `<p class="list-card__desc">${list.description}</p>` : ''}
-        </div>
-      </a>
-      <button class="list-card__delete" data-id="${list.id}" aria-label="Supprimer la liste ${list.name}">
-        Supprimer
-      </button>
-    `;
+
+    const link = document.createElement('a');
+    link.className = 'list-card__link';
+    link.href = `/html/listDetail.html?id=${list.id}`;
+
+    const info = document.createElement('div');
+    info.className = 'list-card__info';
+
+    const name = document.createElement('h2');
+    name.className = 'list-card__name';
+    name.textContent = list.name;
+    info.appendChild(name);
+
+    if (list.description) {
+      const desc = document.createElement('p');
+      desc.className = 'list-card__desc';
+      desc.textContent = list.description;
+      info.appendChild(desc);
+    }
+
+    link.appendChild(info);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'list-card__delete';
+    deleteBtn.dataset.id = String(list.id);
+    deleteBtn.setAttribute('aria-label', `Supprimer la liste ${list.name}`);
+    deleteBtn.textContent = 'Supprimer';
+
+    card.appendChild(link);
+    card.appendChild(deleteBtn);
     container.appendChild(card);
   }
 }

@@ -16,6 +16,14 @@ export async function createList(userId, name, description) {
   return result.insertId;
 }
 
+export async function getListOwner(listId) {
+  const [rows] = await db.execute(
+    'SELECT user_id FROM reading_lists WHERE id = ?',
+    [listId]
+  );
+  return rows[0]?.user_id ?? null;
+}
+
 export async function deleteList(listId, userId) {
   const [result] = await db.execute(
     'DELETE FROM reading_lists WHERE id = ? AND user_id = ?',

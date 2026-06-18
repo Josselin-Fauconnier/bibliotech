@@ -53,13 +53,12 @@ export function initNav() {
   const username = localStorage.getItem('username');
   const role = localStorage.getItem('role');
 
-  if (!username) {
-    nav.innerHTML = `
+  const menuContent = !username
+    ? `
       <a href="/html/login.html" class="nav__link">Se connecter</a>
       <button id="theme-toggle" class="nav__theme-toggle" title="Changer le thème"></button>
-    `;
-  } else {
-    nav.innerHTML = `
+    `
+    : `
       <span id="nav-username" class="nav__username"></span>
       <a href="/" class="nav__link">Rechercher</a>
       <a href="/html/lists.html" class="nav__link">Mes listes</a>
@@ -69,6 +68,12 @@ export function initNav() {
       <button id="logout-btn" class="nav__logout">Se déconnecter</button>
     `;
 
+  nav.innerHTML = `
+    <button id="nav-burger" class="nav__burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">☰</button>
+    <div id="nav-menu" class="nav__menu">${menuContent}</div>
+  `;
+
+  if (username) {
     document.getElementById('nav-username').textContent = `Bonjour, ${username}`;
 
     document.getElementById('logout-btn')?.addEventListener('click', async () => {
@@ -81,6 +86,21 @@ export function initNav() {
 
   updateToggleIcon(getTheme());
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+
+  const burger = document.getElementById('nav-burger');
+  const menu = document.getElementById('nav-menu');
+  burger.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav--open');
+    burger.setAttribute('aria-expanded', String(isOpen));
+    burger.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  menu.querySelectorAll('a.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav--open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Ouvrir le menu');
+    });
+  });
 
   const currentPath = window.location.pathname;
   nav.querySelectorAll('a.nav__link').forEach(link => {

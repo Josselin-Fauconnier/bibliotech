@@ -1,25 +1,25 @@
-/* =============================================
-   AUTH — CARTE
+﻿/* =============================================
+   AUTH â€” CARTE
    ============================================= */
 .auth-card {
   max-width: 420px;
-  margin: var(--space-xl) auto;
+  margin: var(--space-layout) auto;
   background: var(--color-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: var(--space-xl);
+  padding: var(--space-layout);
 }
 
 .auth-card__title {
   font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-section);
   text-align: center;
 }
 
 .auth-card__footer {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-section);
   text-align: center;
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
@@ -31,18 +31,18 @@
 }
 
 /* =============================================
-   AUTH — FORMULAIRE
+   AUTH â€” FORMULAIRE
    ============================================= */
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-component);
 }
 
 .auth-form__field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-inline);
 }
 
 .auth-form__label {
@@ -53,7 +53,7 @@
 
 .auth-form__input {
   width: 100%;
-  padding: 0.75rem var(--space-md);
+  padding: 0.75rem var(--space-component);
   font-size: var(--font-size-base);
   border: 2px solid var(--color-border);
   border-radius: var(--radius);
@@ -70,7 +70,7 @@
 
 .auth-form__btn {
   width: 100%;
-  padding: 0.75rem var(--space-md);
+  padding: 0.75rem var(--space-component);
   font-size: var(--font-size-base);
   font-weight: 600;
   background: var(--color-accent);

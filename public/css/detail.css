@@ -1,11 +1,11 @@
-/* =============================================
+﻿/* =============================================
    FICHE LIVRE
    ============================================= */
 .book-detail {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
+  gap: var(--space-section);
+  margin-bottom: var(--space-layout);
 }
 
 .book-detail__cover {
@@ -27,13 +27,13 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   text-align: center;
-  padding: var(--space-md);
+  padding: var(--space-component);
 }
 
 .book-detail__info-col {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-component);
 }
 
 .book-detail__title {
@@ -67,32 +67,32 @@
 }
 
 /* =============================================
-   AJOUTER À UNE LISTE
+   AJOUTER Ã€ UNE LISTE
    ============================================= */
 .add-to-list {
   background: var(--color-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: var(--space-md);
-  margin-top: var(--space-md);
+  padding: var(--space-component);
+  margin-top: var(--space-component);
 }
 
 .add-to-list__title {
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-inline);
 }
 
 .add-to-list__form {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-inline);
   flex-wrap: wrap;
 }
 
 .add-to-list__select {
   flex: 1;
-  padding: 0.5rem var(--space-sm);
+  padding: 0.5rem var(--space-inline);
   font-size: var(--font-size-sm);
   border: 2px solid var(--color-border);
   border-radius: var(--radius);
@@ -102,7 +102,7 @@
 }
 
 .add-to-list__btn {
-  padding: 0.5rem var(--space-md);
+  padding: 0.5rem var(--space-component);
   font-size: var(--font-size-sm);
   font-weight: 600;
   background: var(--color-accent);
@@ -121,33 +121,33 @@
 .add-to-list__msg {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-inline);
 }
 
 /* =============================================
    COMMENTAIRES
    ============================================= */
 .comments-section {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-layout);
 }
 
 .comments-section__title {
   font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-component);
 }
 
 .comment-form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
+  gap: var(--space-inline);
+  margin-bottom: var(--space-section);
 }
 
 .comment-form__input {
   width: 100%;
-  padding: 0.75rem var(--space-md);
+  padding: 0.75rem var(--space-component);
   font-size: var(--font-size-base);
   font-family: inherit;
   border: 2px solid var(--color-border);
@@ -172,17 +172,17 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-component);
 }
 
 .comment-item {
   background: var(--color-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: var(--space-md);
+  padding: var(--space-component);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-inline);
 }
 
 .comment-item__author {
@@ -205,19 +205,19 @@
 .comment-item__actions {
   display: flex;
   flex-direction: row;
-  gap: var(--space-xs);
-  margin-top: var(--space-xs);
+  gap: var(--space-inline);
+  margin-top: var(--space-inline);
   align-self: flex-start;
 }
 
 .comment-item__actions .btn {
   flex: 1;
   text-align: center;
-  padding: 0.5rem var(--space-md);
+  padding: 0.5rem var(--space-component);
 }
 
 .comment-item > .btn {
-  padding: 0.5rem var(--space-md);
+  padding: 0.5rem var(--space-component);
   align-self: flex-start;
 }
 

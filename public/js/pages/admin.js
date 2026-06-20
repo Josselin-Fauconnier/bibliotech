@@ -1,5 +1,6 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
 import { apiFetch } from '../utils/apiFetch.js';
+import { renderPagination } from '../utils/pagination.js';
 
 initNav();
 initFooter();
@@ -119,32 +120,6 @@ function timeRemaining(bannedUntil) {
   return `${hours}h`;
 }
 
-function renderPagination(container, currentPage, totalPages, onPageChange) {
-  container.innerHTML = '';
-
-  if (totalPages <= 1) return;
-
-  const prev = document.createElement('button');
-  prev.className = 'pagination__btn';
-  prev.textContent = '← Précédent';
-  prev.disabled = currentPage === 1;
-  prev.addEventListener('click', () => onPageChange(currentPage - 1));
-
-  const info = document.createElement('span');
-  info.className = 'pagination__info';
-  info.textContent = `Page ${currentPage} / ${totalPages}`;
-
-  const next = document.createElement('button');
-  next.className = 'pagination__btn';
-  next.textContent = 'Suivant ';
-  next.disabled = currentPage === totalPages;
-  next.addEventListener('click', () => onPageChange(currentPage + 1));
-
-  container.appendChild(prev);
-  container.appendChild(info);
-  container.appendChild(next);
-}
-
 async function loadUsers() {
   usersStatus.textContent = 'Chargement...';
   usersBody.innerHTML = '';
@@ -193,9 +168,13 @@ async function loadUsers() {
     usersBody.appendChild(tr);
   }
 
-  renderPagination(usersPagination, usersPage, totalPages, (page) => {
-    usersPage = page;
-    loadUsers();
+  renderPagination(usersPagination, {
+    currentPage: usersPage,
+    totalPages,
+    onPageChange: (page) => {
+      usersPage = page;
+      loadUsers();
+    },
   });
 }
 
@@ -256,9 +235,13 @@ async function loadComments() {
     commentsBody.appendChild(tr);
   }
 
-  renderPagination(commentsPagination, commentsPage, totalPages, (page) => {
-    commentsPage = page;
-    loadComments();
+  renderPagination(commentsPagination, {
+    currentPage: commentsPage,
+    totalPages,
+    onPageChange: (page) => {
+      commentsPage = page;
+      loadComments();
+    },
   });
 }
 
@@ -314,9 +297,13 @@ async function loadBannedTemp() {
     bannedTempBody.appendChild(tr);
   }
 
-  renderPagination(bannedTempPagination, bannedTempPage, totalPages, (page) => {
-    bannedTempPage = page;
-    loadBannedTemp();
+  renderPagination(bannedTempPagination, {
+    currentPage: bannedTempPage,
+    totalPages,
+    onPageChange: (page) => {
+      bannedTempPage = page;
+      loadBannedTemp();
+    },
   });
 }
 
@@ -368,9 +355,13 @@ async function loadBannedPerm() {
     bannedPermBody.appendChild(tr);
   }
 
-  renderPagination(bannedPermPagination, bannedPermPage, totalPages, (page) => {
-    bannedPermPage = page;
-    loadBannedPerm();
+  renderPagination(bannedPermPagination, {
+    currentPage: bannedPermPage,
+    totalPages,
+    onPageChange: (page) => {
+      bannedPermPage = page;
+      loadBannedPerm();
+    },
   });
 }
 

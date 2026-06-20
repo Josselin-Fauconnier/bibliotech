@@ -1,5 +1,6 @@
 import { initNav, initFooter } from '../utils/navBarre.js';
 import { apiFetch } from '../utils/apiFetch.js';
+import { renderPagination } from '../utils/pagination.js';
 
 initNav();
 initFooter();
@@ -45,7 +46,14 @@ async function loadProfile() {
   profileDate.textContent = new Date(user.created_at).toLocaleDateString('fr-FR');
 
   renderComments(comments.data);
-  renderPagination(comments.page, comments.totalPages);
+  renderPagination(commentsPagination, {
+    currentPage: comments.page,
+    totalPages: comments.totalPages,
+    onPageChange: (page) => {
+      currentPage = page;
+      loadProfile();
+    },
+  });
 }
 
 function renderComments(comments) {
@@ -85,31 +93,6 @@ function renderComments(comments) {
     li.appendChild(meta);
     commentsList.appendChild(li);
   }
-}
-
-function renderPagination(page, totalPages) {
-  commentsPagination.innerHTML = '';
-  if (totalPages <= 1) return;
-
-  const prev = document.createElement('button');
-  prev.className = 'pagination__btn';
-  prev.textContent = '← Précédent';
-  prev.disabled = page === 1;
-  prev.addEventListener('click', () => { currentPage--; loadProfile(); });
-
-  const info = document.createElement('span');
-  info.className = 'pagination__info';
-  info.textContent = `Page ${page} / ${totalPages}`;
-
-  const next = document.createElement('button');
-  next.className = 'pagination__btn';
-  next.textContent = 'Suivant →';
-  next.disabled = page === totalPages;
-  next.addEventListener('click', () => { currentPage++; loadProfile(); });
-
-  commentsPagination.appendChild(prev);
-  commentsPagination.appendChild(info);
-  commentsPagination.appendChild(next);
 }
 
 passwordForm.addEventListener('submit', async (e) => {

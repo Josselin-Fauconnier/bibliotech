@@ -1,5 +1,6 @@
 import { searchBooks, getTrendingBooks } from '../api/backend.js';
 import { initNav, initFooter } from '../utils/navBarre.js';
+import { renderPagination } from '../utils/pagination.js';
 
 initNav();
 initFooter();
@@ -69,40 +70,17 @@ async function loadBooks(query, page = 1) {
     const totalPages = Math.ceil(data.numFound / 20);
     setStatus(`${data.numFound} résultats trouvés — page ${page} / ${totalPages}`, false);
     renderBooks(docs);
-    renderPagination(page, totalPages);
+    renderPagination(booksPagination, {
+      currentPage: page,
+      totalPages,
+      onPageChange: (newPage) => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        loadBooks(currentQuery, newPage);
+      },
+    });
   } catch {
     setStatus('Il y a eu une erreur ', true);
   }
-}
-
-function renderPagination(page, totalPages) {
-  if (totalPages <= 1) return;
-
-  const prev = document.createElement('button');
-  prev.className = 'pagination__btn';
-  prev.textContent = '← Précédent';
-  prev.disabled = page === 1;
-  prev.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    loadBooks(currentQuery, currentPage - 1);
-  });
-
-  const info = document.createElement('span');
-  info.className = 'pagination__info';
-  info.textContent = `Page ${page} / ${totalPages}`;
-
-  const next = document.createElement('button');
-  next.className = 'pagination__btn';
-  next.textContent = 'Suivant →';
-  next.disabled = page === totalPages;
-  next.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    loadBooks(currentQuery, currentPage + 1);
-  });
-
-  booksPagination.appendChild(prev);
-  booksPagination.appendChild(info);
-  booksPagination.appendChild(next);
 }
 
 function renderBooks(docs) {

@@ -66,15 +66,14 @@
   }
 }
 
-/* =============================================
-   AJOUTER Ã€ UNE LISTE
-   ============================================= */
+
 .add-to-list {
   background: var(--color-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: var(--space-component);
   margin-top: var(--space-component);
+  max-width: 500px;
 }
 
 .add-to-list__title {
@@ -124,9 +123,7 @@
   margin-top: var(--space-inline);
 }
 
-/* =============================================
-   COMMENTAIRES
-   ============================================= */
+
 .comments-section {
   margin-top: var(--space-layout);
 }
@@ -143,6 +140,8 @@
   flex-direction: column;
   gap: var(--space-inline);
   margin-bottom: var(--space-section);
+  max-width: 700px;
+  margin-inline: auto;
 }
 
 .comment-form__input {
@@ -173,6 +172,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-component);
+  max-width: 700px;
+  margin-inline: auto;
 }
 
 .comment-item {

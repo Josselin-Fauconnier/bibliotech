@@ -325,9 +325,7 @@ img {
   opacity: 0.75;
 }
 
-/* =============================================
-   PAGINATION
-   ============================================= */
+
 .pagination {
   display: flex;
   align-items: center;

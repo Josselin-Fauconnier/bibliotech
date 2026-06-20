@@ -1,6 +1,4 @@
-﻿/* =============================================
-   AUTH â€” CARTE
-   ============================================= */
+﻿
 .auth-card {
   max-width: 420px;
   margin: var(--space-layout) auto;
@@ -30,9 +28,7 @@
   font-weight: 600;
 }
 
-/* =============================================
-   AUTH â€” FORMULAIRE
-   ============================================= */
+
 .auth-form {
   display: flex;
   flex-direction: column;

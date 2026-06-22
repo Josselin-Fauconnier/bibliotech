@@ -1,6 +1,4 @@
-﻿/* =============================================
-   HERO
-   ============================================= */
+﻿
 .hero {
   text-align: center;
   padding: var(--space-layout) 0 var(--space-section);
@@ -27,9 +25,7 @@
   margin: 0 auto;
 }
 
-/* =============================================
-   SECTION TENDANCES
-   ============================================= */
+
 .trending {
   padding-top: var(--space-layout);
   border-top: 2px solid var(--color-border);

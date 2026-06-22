@@ -1,15 +1,16 @@
 # BiblioTech
 
-BiblioTech est une application web de gestion de bibliothèque personnelle. Elle permet de rechercher des livres via l'API Open Library, de les organiser en listes de lecture et de laisser des commentaires. Un système d'authentification JWT/MySQL personnalise l'expérience et un tableau de bord administrateur offre une vue statistique de la plateforme.
+BiblioTech est une application web de gestion de bibliothèque personnelle. Elle permet de rechercher des livres via l'API Open Library, de les organiser en listes de lecture et de laisser des commentaires. Un système d'authentification JWT/MySQL personnalise l'expérience et un tableau de bord administrateur offre une vue de gestion des utilisateurs et des commentaires.
 
 ## Technologies
 
-- TypeScript (strict mode) — frontend & backend
+- JavaScript (ES Modules) — frontend & backend
 - HTML / CSS (Mobile First, Flexbox/Grid)
 - Node.js + Express 5
 - MySQL 8 + mysql2
 - Zod — validation partagée front/back
 - JWT + bcrypt — authentification
+- Vitest — tests unitaires (schémas Zod, middleware d'authentification)
 - Open Library REST API — données livres (gratuite, sans clé)
 
 ## Structure du projet
@@ -18,38 +19,41 @@ BiblioTech est une application web de gestion de bibliothèque personnelle. Elle
 bibliotech/
 ├── src/
 │   ├── backend/
-│   │   ├── server.ts              # Point d'entrée Express
-│   │   ├── db.ts                  # Connexion MySQL
+│   │   ├── server.js              # Point d'entrée Express
+│   │   ├── db.js                  # Connexion MySQL
 │   │   ├── routes/
-│   │   │   ├── auth.routes.ts
-│   │   │   ├── lists.routes.ts
-│   │   │   ├── comments.routes.ts
-│   │   │   └── admin.routes.ts
+│   │   │   ├── auth-routes.js
+│   │   │   ├── books-routes.js
+│   │   │   ├── lists-routes.js
+│   │   │   ├── comments_routes.js
+│   │   │   ├── admin-routes.js
+│   │   │   └── user-routes.js
 │   │   ├── middlewares/
-│   │   │   ├── isAuthenticated.ts
-│   │   │   └── isAdmin.ts
+│   │   │   ├── isAuthenticated.js
+│   │   │   ├── isAdmin.js
+│   │   │   ├── isListOwner.js
+│   │   │   └── errorHandler.js
 │   │   ├── controllers/           # Logique métier
 │   │   └── models/                # Requêtes SQL
-│   ├── frontend/
-│   │   ├── pages/
-│   │   │   ├── index.ts           # Accueil
-│   │   │   ├── books.ts           # Liste livres
-│   │   │   ├── detail.ts          # Fiche livre
-│   │   │   ├── lists.ts           # Mes listes
-│   │   │   └── admin.ts           # Dashboard admin
-│   │   └── api/
-│   │       └── openLibrary.ts     # Appels API externe
 │   └── shared/
-│       └── schemas/               # Schémas Zod partagés front/back
-│           ├── user-schema.ts
-│           ├── list-schema.ts
-│           └── comment-schema.ts
+│       └── schemas/                # Schémas Zod partagés front/back (+ tests)
+│           ├── user-schema.js
+│           ├── list-schema.js
+│           └── comment-schema.js
 ├── public/
 │   ├── css/
-│   └── html/
-├── .env                           # Ne pas commiter
+│   ├── html/
+│   ├── js/
+│   │   ├── pages/                  # Logique par page (books, lists, admin, profil...)
+│   │   ├── api/                    # Appels vers le backend
+│   │   └── utils/                  # apiFetch, pagination, navbar
+│   └── index.html
+├── DB/
+│   └── Bibliotech.sql              # Schéma de la base de données
+├── test Postman/
+│   └── biblioteck.postman_collection.json
+├── .env                            # Ne pas commiter
 ├── .gitignore
-├── tsconfig.json
 └── package.json
 ```
 
@@ -60,4 +64,11 @@ npm run dev
 ```
 
 Serveur disponible sur `http://localhost:3023`
+
+## Tests
+
+```bash
+npm test              
+
+```
 

@@ -60,9 +60,7 @@
   cursor: not-allowed;
 }
 
-/* =============================================
-   CARTES DE LISTES
-   ============================================= */
+
 .lists-container {
   display: flex;
   flex-direction: column;

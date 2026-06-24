@@ -60,7 +60,7 @@ export async function addBook(req, res) {
   }
 
   const total = await countBooksInList(listId);
-  if (total >= MAX_BOOKS_PER_LIST) {
+  if (total >= maxBooks) {
     res.status(409).json({ message: `Une liste ne peut pas contenir plus de ${maxBooks} livres` });
     return;
   }

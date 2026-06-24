@@ -45,12 +45,12 @@ async function loadListBooks() {
   listStatus.textContent = '';
 
   for (const book of books) {
-    const card = await createBookCard(book.book_id);
+    const card = await listBookcard(book.book_id);
     if (card) booksGrid.appendChild(card);
   }
 }
 
-async function createBookCard(bookId) {
+async function listBookcard(bookId) {
   try {
     const work = await getWorkDetails(bookId);
 

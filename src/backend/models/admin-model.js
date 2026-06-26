@@ -3,11 +3,12 @@ import { db } from '../db.js';
 export async function getAllUsers(page, limit) {
   const offset = (page - 1) * limit;
 
-  const [rows] = await db.execute(
+  const [rows] = await db.query(
     `SELECT id, username, email, role, created_at FROM users
      WHERE deleted_at IS NULL
        AND (banned_at IS NULL OR (banned_until IS NOT NULL AND banned_until <= NOW()))
-     ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`
+     ORDER BY created_at DESC LIMIT ? OFFSET ?`,
+    [limit, offset]
   );
 
   const [countRows] = await db.execute(
@@ -22,12 +23,13 @@ export async function getAllUsers(page, limit) {
 export async function getAllComments(page, limit) {
   const offset = (page - 1) * limit;
 
-  const [rows] = await db.execute(
+  const [rows] = await db.query(
     `SELECT c.id, c.content, c.created_at, c.book_id, u.username
      FROM comments c
      JOIN users u ON c.user_id = u.id
      ORDER BY c.created_at DESC
-     LIMIT ${limit} OFFSET ${offset}`
+     LIMIT ? OFFSET ?`,
+    [limit, offset]
   );
 
   const [countRows] = await db.execute(
@@ -44,14 +46,15 @@ export async function getBannedUsers(page, limit, type) {
     ? 'AND banned_until IS NULL'
     : 'AND banned_until IS NOT NULL AND banned_until > NOW()';
 
-  const [rows] = await db.execute(
+  const [rows] = await db.query(
     `SELECT id, username, ban_reason, banned_at, banned_until
      FROM users
      WHERE deleted_at IS NULL
        AND banned_at IS NOT NULL
        ${typeFilter}
      ORDER BY banned_at DESC
-     LIMIT ${limit} OFFSET ${offset}`
+     LIMIT ? OFFSET ?`,
+    [limit, offset]
   );
 
   const [countRows] = await db.execute(

@@ -40,7 +40,7 @@ export async function changePassword(req, res) {
 
   const valid = await bcrypt.compare(currentPassword, user.password);
   if (!valid) {
-    res.status(401).json({ message: "ce n'est pas votre mot d epasse actuel "});
+    res.status(401).json({ message: "ce n'est pas votre mot de passe actuel "});
     return;
   }
 
@@ -58,5 +58,5 @@ export async function deleteAccount(req, res) {
   }
 
   res.clearCookie('token', { httpOnly: true, secure: false, sameSite: 'strict' });
-  res.json({ message: "le comte a bien été suprimé " });
+  res.json({ message: "le compte a bien été suprimé " });
 }

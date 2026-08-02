@@ -2,23 +2,38 @@ import { searchBooks, getTrendingBooks } from '../api/backend.js';
 import { initNav, initFooter } from '../utils/navBarre.js';
 import { renderPagination } from '../utils/pagination.js';
 import { createBookCard } from '../utils/bookCard.js';
+import { initAutocomplete } from '../utils/autocomplete.js';
 
 initNav();
 initFooter();
 
-const searchForm      = document.querySelector('#search-form');
-const searchInput     = document.querySelector('#search-input');
-const booksGrid       = document.querySelector('#books-grid');
-const statusEl        = document.querySelector('#status-message');
-const booksPagination = document.querySelector('#books-pagination');
+const searchForm       = document.querySelector('#search-form');
+const searchField      = document.querySelector('.search-form__field');
+const searchInput      = document.querySelector('#search-input');
+const suggestionsList  = document.querySelector('#search-suggestions');
+const booksGrid        = document.querySelector('#books-grid');
+const statusEl         = document.querySelector('#status-message');
+const booksPagination  = document.querySelector('#books-pagination');
 
 let currentQuery = '';
 let currentPage  = 1;
+
+const autocomplete = initAutocomplete({
+  field: searchField,
+  input: searchInput,
+  list: suggestionsList,
+  onSelect: (book) => {
+    searchInput.value = book.title;
+    currentPage = 1;
+    loadBooks(book.title);
+  },
+});
 
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const query = searchInput.value.trim();
   if (query) {
+    autocomplete.hide();
     currentPage = 1;
     loadBooks(query);
   }

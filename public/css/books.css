@@ -23,6 +23,40 @@
   border-color: var(--color-accent);
 }
 
+.search-form__field {
+  position: relative;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.search-suggestions[hidden] {
+  display: none;
+}
+
+.search-suggestions li {
+  padding: 0.5rem var(--space-component);
+  cursor: pointer;
+}
+
+.search-suggestions li:hover,
+.search-suggestions li.is-active {
+  background: var(--color-border);
+}
+
 .search-form__btn {
   width: 100%;
   padding: 0.75rem var(--space-component);

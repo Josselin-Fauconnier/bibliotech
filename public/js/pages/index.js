@@ -1,20 +1,34 @@
 import { getTrendingBooks } from '../api/backend.js';
 import { initNav, initFooter } from '../utils/navBarre.js';
 import { createBookCard } from '../utils/bookCard.js';
+import { initAutocomplete } from '../utils/autocomplete.js';
 
 initNav();
 initFooter();
 
-const searchForm = document.querySelector('#search-form');
-const searchInput = document.querySelector('#search-input');
-const booksGrid   = document.querySelector('#books-grid');
-const statusEl    = document.querySelector('#status-message');
+const searchForm      = document.querySelector('#search-form');
+const searchField     = document.querySelector('.search-form__field');
+const searchInput     = document.querySelector('#search-input');
+const suggestionsList = document.querySelector('#search-suggestions');
+const booksGrid       = document.querySelector('#books-grid');
+const statusEl        = document.querySelector('#status-message');
+
+initAutocomplete({
+  field: searchField,
+  input: searchInput,
+  list: suggestionsList,
+  onSelect: (book) => goToSearch(book.title),
+});
 
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const q = searchInput.value.trim();
-  if (q) window.location.href = `/html/books.html?q=${encodeURIComponent(q)}`;
+  if (q) goToSearch(q);
 });
+
+function goToSearch(query) {
+  window.location.href = `/html/books.html?q=${encodeURIComponent(query)}`;
+}
 
 async function loadTrending() {
   setStatus('Chargement des livres du moment...', false);

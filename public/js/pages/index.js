@@ -14,6 +14,7 @@ const booksGrid       = document.querySelector('#books-grid');
 const statusEl        = document.querySelector('#status-message');
 
 initAutocomplete({
+  form: searchForm,
   field: searchField,
   input: searchInput,
   list: suggestionsList,

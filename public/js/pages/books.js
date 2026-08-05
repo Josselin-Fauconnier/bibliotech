@@ -18,7 +18,8 @@ const booksPagination  = document.querySelector('#books-pagination');
 let currentQuery = '';
 let currentPage  = 1;
 
-const autocomplete = initAutocomplete({
+initAutocomplete({
+  form: searchForm,
   field: searchField,
   input: searchInput,
   list: suggestionsList,
@@ -33,7 +34,6 @@ searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const query = searchInput.value.trim();
   if (query) {
-    autocomplete.hide();
     currentPage = 1;
     loadBooks(query);
   }

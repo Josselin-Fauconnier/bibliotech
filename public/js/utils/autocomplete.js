@@ -1,8 +1,10 @@
 import { searchBooks } from '../api/backend.js';
 
-export function initAutocomplete({ field, input, list, onSelect, minLength = 1, delay = 300, maxResults = 5 }) {
+export function initAutocomplete({ form, field, input, list, onSelect, minLength = 1, delay = 300, maxResults = 5 }) {
   let debounceTimer = null;
   let requestId = 0;
+
+  form?.addEventListener('submit', () => hide());
 
   input.addEventListener('input', () => {
     clearTimeout(debounceTimer);
@@ -68,6 +70,4 @@ export function initAutocomplete({ field, input, list, onSelect, minLength = 1, 
     list.innerHTML = '';
     input.setAttribute('aria-expanded', 'false');
   }
-
-  return { hide };
 }
